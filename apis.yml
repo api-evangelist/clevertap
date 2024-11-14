@@ -1,0 +1,31 @@
+aid: clevertap
+name: CleverTap
+description: >-
+  This endpoint enables you to raise a Bulletin after a business event is
+  triggered. 
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - API
+created: '2024-11-14'
+modified: '2024-11-14'
+url: >-
+  https://raw.githubusercontent.com/api-search/clevertap/refs/heads/main/apis.yml
+specificationVersion: '0.19'
+apis:
+  - aid: clevertap:clevertap
+    name: CleverTap
+    description: >-
+      This endpoint enables you to raise a Bulletin after a business event is
+      triggered. 
+    humanURL: ' https://developer.clevertap.com/docs/bulletins-api'
+    tags:
+      - API
+    properties:
+      - type: Documentation
+        url: ' https://developer.clevertap.com/docs/bulletins-api'
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
