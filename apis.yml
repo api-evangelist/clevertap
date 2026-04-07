@@ -3,10 +3,10 @@ url: >-
   https://raw.githubusercontent.com/api-evangelist/clevertap/refs/heads/main/apis.yml
 name: CleverTap
 tags:
+  - Audiences
   - Customer Engagement
   - Customer Retention
   - User Behavior
-  - Audiences
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
