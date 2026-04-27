@@ -1,0 +1,72 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "ct": "https://clevertap.com/ns/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Profile": {
+      "@id": "ct:Profile",
+      "@context": {
+        "identity": "schema:identifier",
+        "objectID": "ct:objectId",
+        "email": "schema:email",
+        "name": "schema:name",
+        "phone": "schema:telephone",
+        "properties": "ct:profileProperties"
+      }
+    },
+
+    "Event": {
+      "@id": "ct:Event",
+      "@context": {
+        "evtName": "schema:name",
+        "evtData": "ct:eventData",
+        "ts": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "identity": "schema:identifier"
+      }
+    },
+
+    "Campaign": {
+      "@id": "ct:Campaign",
+      "@context": {
+        "id": "schema:identifier",
+        "name": "schema:name",
+        "channel": "ct:channel",
+        "type": "schema:additionalType",
+        "status": "ct:status",
+        "schedule": "schema:scheduledTime"
+      }
+    },
+
+    "Bulletin": {
+      "@id": "ct:Bulletin",
+      "@context": {
+        "name": "schema:name",
+        "data": "ct:bulletinData"
+      }
+    },
+
+    "CatalogItem": {
+      "@id": "schema:Product",
+      "@context": {
+        "id": "schema:productID",
+        "name": "schema:name",
+        "price": "schema:price",
+        "image": "schema:image",
+        "url": "schema:url"
+      }
+    },
+
+    "CustomList": {
+      "@id": "ct:CustomList",
+      "@context": {
+        "name": "schema:name",
+        "members": "ct:members"
+      }
+    }
+  }
+}

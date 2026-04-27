@@ -1,0 +1,101 @@
+# Naftiko capabilities profile for CleverTap.
+# Capabilities are derived from the CleverTap REST API documentation
+# at developer.clevertap.com/docs.
+provider: clevertap
+name: CleverTap
+description: >-
+  CleverTap is a customer engagement and retention platform delivering
+  cross-channel messaging, behavioral analytics, segmentation, and
+  personalization for mobile and web applications.
+capabilities:
+  - id: clevertap.profile.upload
+    name: Upload user profiles
+    description: Insert or update user profiles with identity, demographic, and custom property data.
+    inputs:
+      - account-id
+      - passcode
+      - profiles
+    outputs:
+      - status
+  - id: clevertap.profile.lookup
+    name: Look up user profile
+    description: Retrieve a user profile by identity (email, identity, or objectID).
+    inputs:
+      - account-id
+      - passcode
+      - identity
+    outputs:
+      - profile
+  - id: clevertap.event.upload
+    name: Upload user events
+    description: Track user events with arbitrary properties for behavior analysis and triggered messaging.
+    inputs:
+      - account-id
+      - passcode
+      - events
+    outputs:
+      - status
+  - id: clevertap.campaign.create
+    name: Create campaign
+    description: Create a push, email, SMS, web, or in-app campaign targeting an audience or segment.
+    inputs:
+      - account-id
+      - passcode
+      - campaign
+    outputs:
+      - campaign-id
+  - id: clevertap.campaign.report
+    name: Get campaign report
+    description: Retrieve delivery and engagement metrics for an existing campaign.
+    inputs:
+      - account-id
+      - passcode
+      - campaign-id
+    outputs:
+      - report
+  - id: clevertap.bulletin.raise
+    name: Raise bulletin
+    description: Raise a bulletin event from an external system to drive real-time CleverTap campaign delivery.
+    inputs:
+      - account-id
+      - passcode
+      - bulletin
+    outputs:
+      - status
+  - id: clevertap.catalog.upsert
+    name: Upsert catalog items
+    description: Insert or update product catalog items used in personalization and recommendations.
+    inputs:
+      - account-id
+      - passcode
+      - items
+    outputs:
+      - status
+  - id: clevertap.list.upsert
+    name: Upsert custom list
+    description: Create or update a custom list used as an audience segment.
+    inputs:
+      - account-id
+      - passcode
+      - list-name
+      - members
+    outputs:
+      - list-id
+  - id: clevertap.remote-config.set
+    name: Set remote config variable
+    description: Define or update a remote configuration variable or feature flag.
+    inputs:
+      - account-id
+      - passcode
+      - variable
+    outputs:
+      - status
+  - id: clevertap.counts.real-time
+    name: Get real-time counts
+    description: Query real-time counts of events, profiles, or segments.
+    inputs:
+      - account-id
+      - passcode
+      - query
+    outputs:
+      - counts
