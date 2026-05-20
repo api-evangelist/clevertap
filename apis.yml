@@ -122,6 +122,10 @@ apis:
     description: >-
       Query real-time counts and trends of events, profiles, and segments.
 common:
+  - type: GitHubOrganization
+    url: https://github.com/CleverTap
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/clevertap
   - type: Website
     url: https://clevertap.com/
   - type: Developer Portal
