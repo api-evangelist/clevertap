@@ -148,6 +148,8 @@ common:
     url: rules/clevertap-rules.yml
   - type: Naftiko Capabilities
     url: capabilities/clevertap-capabilities.yml
+  - type: LLMsTxt
+    url: https://developer.clevertap.com/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kinlane@gmail.com
