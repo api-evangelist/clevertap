@@ -18,13 +18,10 @@ tags:
   - Push Notifications
   - User Behavior
 description: >-
-  CleverTap is a customer engagement and retention platform that helps
-  businesses understand user behavior, segment audiences, and deliver
-  personalized experiences across mobile push, email, SMS, in-app, web push,
-  and WhatsApp channels. CleverTap exposes a comprehensive REST API surface
-  covering profiles, events, campaigns, real-time analytics, catalogs,
-  feature flags, and more, authenticated via account ID and passcode
-  headers.
+  CleverTap is a customer engagement and retention platform that helps businesses understand user behavior, segment
+  audiences, and deliver personalized experiences across mobile push, email, SMS, in-app, web push, and WhatsApp
+  channels. CleverTap exposes a comprehensive REST API surface covering profiles, events, campaigns, real-time
+  analytics, catalogs, feature flags, and more, authenticated via account ID and passcode headers.
 apis:
   - aid: clevertap:profile-api
     name: CleverTap Profile API
@@ -36,8 +33,8 @@ apis:
       - url: https://developer.clevertap.com/docs/profile-api
         type: Documentation
     description: >-
-      Upload, retrieve, update, and delete user profiles in CleverTap with
-      identity, demographic, and custom property data.
+      Upload, retrieve, update, and delete user profiles in CleverTap with identity, demographic, and custom property
+      data.
   - aid: clevertap:event-api
     name: CleverTap Event API
     tags:
@@ -47,9 +44,7 @@ apis:
     properties:
       - url: https://developer.clevertap.com/docs/event-api
         type: Documentation
-    description: >-
-      Record user events with arbitrary properties for behavioral
-      segmentation, funnels, and triggered messaging.
+    description: Record user events with arbitrary properties for behavioral segmentation, funnels, and triggered messaging.
   - aid: clevertap:campaign-api
     name: CleverTap Campaign API
     tags:
@@ -60,8 +55,8 @@ apis:
       - url: https://developer.clevertap.com/docs/create-a-campaign-api
         type: Documentation
     description: >-
-      Programmatically create and manage push, email, SMS, web, and in-app
-      campaigns and retrieve message status reports.
+      Programmatically create and manage push, email, SMS, web, and in-app campaigns and retrieve message status
+      reports.
   - aid: clevertap:bulletins-api
     name: CleverTap Bulletins API
     tags:
@@ -72,8 +67,8 @@ apis:
       - url: https://developer.clevertap.com/docs/bulletins-api
         type: Documentation
     description: >-
-      Raise a Bulletin in CleverTap when a business event is triggered, used
-      to drive real-time campaign delivery from external systems.
+      Raise a Bulletin in CleverTap when a business event is triggered, used to drive real-time campaign delivery from
+      external systems.
   - aid: clevertap:catalog-api
     name: CleverTap Catalog API
     tags:
@@ -83,9 +78,7 @@ apis:
     properties:
       - url: https://developer.clevertap.com/docs/catalog-api
         type: Documentation
-    description: >-
-      Manage product catalog data feeding personalization, recommendations,
-      and product-aware messaging.
+    description: Manage product catalog data feeding personalization, recommendations, and product-aware messaging.
   - aid: clevertap:custom-list-api
     name: CleverTap Custom List API
     tags:
@@ -95,9 +88,7 @@ apis:
     properties:
       - url: https://developer.clevertap.com/docs/custom-list-api
         type: Documentation
-    description: >-
-      Create and update custom lists used as audience segments in
-      campaigns and journeys.
+    description: Create and update custom lists used as audience segments in campaigns and journeys.
   - aid: clevertap:remote-config-api
     name: CleverTap Remote Config API
     tags:
@@ -107,9 +98,7 @@ apis:
     properties:
       - url: https://developer.clevertap.com/docs/remote-config-api
         type: Documentation
-    description: >-
-      Manage feature flags and remote configuration variables delivered
-      to mobile apps and websites.
+    description: Manage feature flags and remote configuration variables delivered to mobile apps and websites.
   - aid: clevertap:counts-api
     name: CleverTap Real-Time Counts API
     tags:
@@ -119,8 +108,7 @@ apis:
     properties:
       - url: https://developer.clevertap.com/docs/real-time-counts-api
         type: Documentation
-    description: >-
-      Query real-time counts and trends of events, profiles, and segments.
+    description: Query real-time counts and trends of events, profiles, and segments.
 common:
   - type: GitHubOrganization
     url: https://github.com/CleverTap
@@ -146,8 +134,6 @@ common:
     url: json-ld/clevertap-context.jsonld
   - type: Spectral
     url: rules/clevertap-rules.yml
-  - type: Naftiko Capabilities
-    url: capabilities/clevertap-capabilities.yml
   - type: LLMsTxt
     url: https://developer.clevertap.com/llms.txt
 maintainers:
