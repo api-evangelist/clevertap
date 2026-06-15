@@ -1,0 +1,211 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CleverTap REST API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-CleverTap-Account-Id",
+      "value": "{{X-CleverTap-Account-Id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Profiles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upload user profiles or events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.api.clevertap.com/1/upload",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upload an array of records, each typed as \"profile\" or \"event\".\nMaximum 1000 records per call.\n"
+        },
+        {
+          "info": {
+            "name": "Get a user profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.api.clevertap.com/1/profile.json",
+            "params": [
+              {
+                "name": "identity",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "objectId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a user profile"
+        },
+        {
+          "info": {
+            "name": "Search/query user profiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.api.clevertap.com/1/profiles.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search/query user profiles"
+        },
+        {
+          "info": {
+            "name": "Disassociate (delete) user profiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.api.clevertap.com/1/disassociate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Disassociate (delete) user profiles"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Query events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.api.clevertap.com/1/events.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query events"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get event counts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.api.clevertap.com/1/counts/event.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get event counts"
+        },
+        {
+          "info": {
+            "name": "Get profile counts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.api.clevertap.com/1/counts/profile.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get profile counts"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Campaigns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.api.clevertap.com/1/targets/create.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a campaign across push, email, sms, webpush, whatsapp,\nwebhook, or notificationinbox channels.\n"
+        },
+        {
+          "info": {
+            "name": "Stop a campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.api.clevertap.com/1/targets/stop.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Stop a campaign"
+        },
+        {
+          "info": {
+            "name": "Get campaign result/report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.api.clevertap.com/1/targets/result.json",
+            "params": [
+              {
+                "name": "req_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get campaign result/report"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

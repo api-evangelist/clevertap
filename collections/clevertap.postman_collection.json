@@ -1,0 +1,1366 @@
+{
+  "item": [
+    {
+      "id": "d59a1867-16ce-4c78-a1f2-6d459f946719",
+      "name": "Profiles",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5ee8ee60-29c6-468b-88fc-3126365a2dc1",
+          "name": "Upload user profiles or events",
+          "request": {
+            "name": "Upload user profiles or events",
+            "description": {
+              "content": "Upload an array of records, each typed as \"profile\" or \"event\".\nMaximum 1000 records per call.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "1",
+                "upload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"d\": [\n    {\n      \"type\": \"<string>\",\n      \"identity\": \"<string>\",\n      \"FBID\": \"<string>\",\n      \"GPID\": \"<string>\",\n      \"objectId\": \"<string>\",\n      \"profileData\": \"<object>\",\n      \"evtName\": \"<string>\",\n      \"evtData\": \"<object>\",\n      \"ts\": \"<integer>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"identity\": \"<string>\",\n      \"FBID\": \"<string>\",\n      \"GPID\": \"<string>\",\n      \"objectId\": \"<string>\",\n      \"profileData\": \"<object>\",\n      \"evtName\": \"<string>\",\n      \"evtData\": \"<object>\",\n      \"ts\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4587a94a-42af-4e81-9154-be0eb831ad1a",
+              "name": "Upload accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-CleverTap-Account-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"d\": [\n    {\n      \"type\": \"<string>\",\n      \"identity\": \"<string>\",\n      \"FBID\": \"<string>\",\n      \"GPID\": \"<string>\",\n      \"objectId\": \"<string>\",\n      \"profileData\": \"<object>\",\n      \"evtName\": \"<string>\",\n      \"evtData\": \"<object>\",\n      \"ts\": \"<integer>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"identity\": \"<string>\",\n      \"FBID\": \"<string>\",\n      \"GPID\": \"<string>\",\n      \"objectId\": \"<string>\",\n      \"profileData\": \"<object>\",\n      \"evtName\": \"<string>\",\n      \"evtData\": \"<object>\",\n      \"ts\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"processed\": 8188\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "734e4611-25a8-42bc-8db5-cc547326853a",
+              "name": "Concurrency / rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-CleverTap-Account-Id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"d\": [\n    {\n      \"type\": \"<string>\",\n      \"identity\": \"<string>\",\n      \"FBID\": \"<string>\",\n      \"GPID\": \"<string>\",\n      \"objectId\": \"<string>\",\n      \"profileData\": \"<object>\",\n      \"evtName\": \"<string>\",\n      \"evtData\": \"<object>\",\n      \"ts\": \"<integer>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"identity\": \"<string>\",\n      \"FBID\": \"<string>\",\n      \"GPID\": \"<string>\",\n      \"objectId\": \"<string>\",\n      \"profileData\": \"<object>\",\n      \"evtName\": \"<string>\",\n      \"evtData\": \"<object>\",\n      \"ts\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d92f2d8-0811-4a58-a5cf-40a9ff54dd92",
+          "name": "Get a user profile",
+          "request": {
+            "name": "Get a user profile",
+            "description": {},
+            "url": {
+              "path": [
+                "1",
+                "profile.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "identity",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "objectId",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "259406a2-ddae-43c0-a4e6-60aec81b59c5",
+              "name": "User profile",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1",
+                    "profile.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "identity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "objectId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-CleverTap-Account-Id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "110215c4-22f5-4722-b66b-9ebdbd437069",
+          "name": "Search/query user profiles",
+          "request": {
+            "name": "Search/query user profiles",
+            "description": {},
+            "url": {
+              "path": [
+                "1",
+                "profiles.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "121aa44a-8db5-4db7-8111-03dc32f2bb36",
+              "name": "Profile query result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1",
+                    "profiles.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-CleverTap-Account-Id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8706bb86-4463-4fd3-bcd6-ca2744f66956",
+          "name": "Disassociate (delete) user profiles",
+          "request": {
+            "name": "Disassociate (delete) user profiles",
+            "description": {},
+            "url": {
+              "path": [
+                "1",
+                "disassociate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "20dacc80-c454-4991-a375-6cc25967e02e",
+              "name": "Disassociated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1",
+                    "disassociate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-CleverTap-Account-Id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "18a8ac8c-d598-4040-850d-a4584391e4df",
+      "name": "Events",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "60554ec7-6258-4fe7-98b6-1efb5af424a9",
+          "name": "Upload user profiles or events",
+          "request": {
+            "name": "Upload user profiles or events",
+            "description": {
+              "content": "Upload an array of records, each typed as \"profile\" or \"event\".\nMaximum 1000 records per call.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "1",
+                "upload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"d\": [\n    {\n      \"type\": \"<string>\",\n      \"identity\": \"<string>\",\n      \"FBID\": \"<string>\",\n      \"GPID\": \"<string>\",\n      \"objectId\": \"<string>\",\n      \"profileData\": \"<object>\",\n      \"evtName\": \"<string>\",\n      \"evtData\": \"<object>\",\n      \"ts\": \"<integer>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"identity\": \"<string>\",\n      \"FBID\": \"<string>\",\n      \"GPID\": \"<string>\",\n      \"objectId\": \"<string>\",\n      \"profileData\": \"<object>\",\n      \"evtName\": \"<string>\",\n      \"evtData\": \"<object>\",\n      \"ts\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "97174275-bddd-422f-b44b-0a2ec1ec2510",
+              "name": "Upload accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-CleverTap-Account-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"d\": [\n    {\n      \"type\": \"<string>\",\n      \"identity\": \"<string>\",\n      \"FBID\": \"<string>\",\n      \"GPID\": \"<string>\",\n      \"objectId\": \"<string>\",\n      \"profileData\": \"<object>\",\n      \"evtName\": \"<string>\",\n      \"evtData\": \"<object>\",\n      \"ts\": \"<integer>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"identity\": \"<string>\",\n      \"FBID\": \"<string>\",\n      \"GPID\": \"<string>\",\n      \"objectId\": \"<string>\",\n      \"profileData\": \"<object>\",\n      \"evtName\": \"<string>\",\n      \"evtData\": \"<object>\",\n      \"ts\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"processed\": 9885\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4fb2206-9905-489b-ba74-a313bf4c392e",
+              "name": "Concurrency / rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-CleverTap-Account-Id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"d\": [\n    {\n      \"type\": \"<string>\",\n      \"identity\": \"<string>\",\n      \"FBID\": \"<string>\",\n      \"GPID\": \"<string>\",\n      \"objectId\": \"<string>\",\n      \"profileData\": \"<object>\",\n      \"evtName\": \"<string>\",\n      \"evtData\": \"<object>\",\n      \"ts\": \"<integer>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"identity\": \"<string>\",\n      \"FBID\": \"<string>\",\n      \"GPID\": \"<string>\",\n      \"objectId\": \"<string>\",\n      \"profileData\": \"<object>\",\n      \"evtName\": \"<string>\",\n      \"evtData\": \"<object>\",\n      \"ts\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e24bb62b-29b8-49f8-af2c-78e5dc9f595b",
+          "name": "Query events",
+          "request": {
+            "name": "Query events",
+            "description": {},
+            "url": {
+              "path": [
+                "1",
+                "events.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d9fe5931-7426-4718-b79d-57324bba4a58",
+              "name": "Events query result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1",
+                    "events.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-CleverTap-Account-Id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "66a43db8-38e9-46da-a653-cb3064cbdd4d",
+      "name": "Reports",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dc2f9b4f-1a35-4d17-95d6-23da4e0628e4",
+          "name": "Get event counts",
+          "request": {
+            "name": "Get event counts",
+            "description": {},
+            "url": {
+              "path": [
+                "1",
+                "counts",
+                "event.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2cec97b8-02d2-4c44-b3ad-599d4becf926",
+              "name": "Event counts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1",
+                    "counts",
+                    "event.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-CleverTap-Account-Id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b47c9cb4-e8b7-44e6-9e04-52df25bca6e3",
+          "name": "Get profile counts",
+          "request": {
+            "name": "Get profile counts",
+            "description": {},
+            "url": {
+              "path": [
+                "1",
+                "counts",
+                "profile.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5f27d96b-bbc9-43be-8a3f-5f5e71938e3a",
+              "name": "Profile counts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1",
+                    "counts",
+                    "profile.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-CleverTap-Account-Id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "b5f8240d-99dc-4c1d-ac5a-adf3bfeca968",
+      "name": "Campaigns",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f8df5112-e02b-4cd2-aef3-6db9b384b0ef",
+          "name": "Create a campaign",
+          "request": {
+            "name": "Create a campaign",
+            "description": {
+              "content": "Create a campaign across push, email, sms, webpush, whatsapp,\nwebhook, or notificationinbox channels.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "1",
+                "targets",
+                "create.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"target_mode\": \"<string>\",\n  \"content\": \"<object>\",\n  \"when\": \"<string>\",\n  \"where\": \"<object>\",\n  \"estimate_only\": \"<boolean>\",\n  \"draft\": \"<boolean>\",\n  \"segment\": \"<string>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"respect_frequency_caps\": \"<boolean>\",\n  \"send_to_all_devices\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0ceafea6-8d6a-4a45-a0cf-85bc70892b2c",
+              "name": "Campaign created or estimated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1",
+                    "targets",
+                    "create.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-CleverTap-Account-Id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"target_mode\": \"<string>\",\n  \"content\": \"<object>\",\n  \"when\": \"<string>\",\n  \"where\": \"<object>\",\n  \"estimate_only\": \"<boolean>\",\n  \"draft\": \"<boolean>\",\n  \"segment\": \"<string>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"respect_frequency_caps\": \"<boolean>\",\n  \"send_to_all_devices\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "05dbdec6-68cd-4adc-9679-33ca4fa2b646",
+          "name": "Stop a campaign",
+          "request": {
+            "name": "Stop a campaign",
+            "description": {},
+            "url": {
+              "path": [
+                "1",
+                "targets",
+                "stop.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fee99cec-5063-4af8-99fb-cefe73209ca5",
+              "name": "Stopped",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1",
+                    "targets",
+                    "stop.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-CleverTap-Account-Id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c18b80c1-7b4d-48d4-a2e8-cf8c1919e189",
+          "name": "Get campaign result/report",
+          "request": {
+            "name": "Get campaign result/report",
+            "description": {},
+            "url": {
+              "path": [
+                "1",
+                "targets",
+                "result.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "req_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "06b1dcf0-93bf-481b-8cd8-fb8e150c99d0",
+              "name": "Campaign result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1",
+                    "targets",
+                    "result.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "req_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-CleverTap-Account-Id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "in1",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://{{region}}.api.clevertap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-CleverTap-Account-Id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8357285d-f0a7-4822-ad6d-837d372a6ca7",
+    "name": "CleverTap REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CleverTap customer engagement and retention REST API.\nThe base URL is region-specific: replace {region} with your account's\nregion code (e.g. in1, us1, eu1, sg1, sk1, mec1). All requests must\ninclude X-CleverTap-Account-Id and X-CleverTap-Passcode headers.\nRate limits: concurrent requests capped at 15 per account; campaign\ncreation limited to 3 RPS.\n\n\nContact Support:\n Name: CleverTap Developers",
+      "type": "text/plain"
+    }
+  }
+}
