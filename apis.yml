@@ -116,7 +116,7 @@ common:
     url: https://www.linkedin.com/company/clevertap
   - type: Website
     url: https://clevertap.com/
-  - type: Developer Portal
+  - type: DeveloperPortal
     url: https://developer.clevertap.com/
   - type: Documentation
     url: https://developer.clevertap.com/docs
@@ -134,7 +134,7 @@ common:
     url: json-ld/clevertap-context.jsonld
   - type: Spectral
     url: rules/clevertap-rules.yml
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://developer.clevertap.com/llms.txt
 maintainers:
   - FN: Kin Lane
