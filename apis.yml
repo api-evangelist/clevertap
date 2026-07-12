@@ -110,6 +110,12 @@ apis:
         type: Documentation
     description: Query real-time counts and trends of events, profiles, and segments.
 common:
+  - type: TrustCenter
+    url: security/clevertap-trust-center.yml
+  - type: DomainSecurity
+    url: security/clevertap-domain-security.yml
+  - type: Authentication
+    url: authentication/clevertap-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/CleverTap
   - type: LinkedIn
@@ -136,6 +142,8 @@ common:
     url: rules/clevertap-rules.yml
   - type: LlmsText
     url: https://developer.clevertap.com/llms.txt
+  - url: https://clevertap.com/blog
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kinlane@gmail.com

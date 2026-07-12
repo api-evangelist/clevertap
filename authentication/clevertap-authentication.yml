@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/clevertap-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: AccountId
+  type: apiKey
+  in: header
+  parameter: X-CleverTap-Account-Id
+  description: CleverTap account identifier
+  sources:
+  - openapi/clevertap-openapi.yml
+- name: Passcode
+  type: apiKey
+  in: header
+  parameter: X-CleverTap-Passcode
+  description: CleverTap account or user passcode
+  sources:
+  - openapi/clevertap-openapi.yml
