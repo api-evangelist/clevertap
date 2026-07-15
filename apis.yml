@@ -110,6 +110,8 @@ apis:
         type: Documentation
     description: Query real-time counts and trends of events, profiles, and segments.
 common:
+  - type: AgenticAccess
+    url: agentic-access/clevertap-agentic-access.yml
   - type: TrustCenter
     url: security/clevertap-trust-center.yml
   - type: DomainSecurity
