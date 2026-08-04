@@ -1,0 +1,20 @@
+{
+  "provider": "clevertap",
+  "sources": [
+    "clevertap-campaigns-api-openapi.yml",
+    "clevertap-events-api-openapi.yml",
+    "clevertap-profiles-api-openapi.yml",
+    "clevertap-reports-api-openapi.yml"
+  ],
+  "outputs": [
+    "clevertap-campaigns-api-openapi.yml",
+    "clevertap-events-api-openapi.yml",
+    "clevertap-profiles-api-openapi.yml",
+    "clevertap-reports-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,261 @@
+openapi: 3.1.0
+info:
+  title: CleverTap REST API
+  description: |
+    CleverTap customer engagement and retention REST API.
+    The base URL is region-specific: replace {region} with your account's
+    region code (e.g. in1, us1, eu1, sg1, sk1, mec1). All requests must
+    include X-CleverTap-Account-Id and X-CleverTap-Passcode headers.
+    Rate limits: concurrent requests capped at 15 per account; campaign
+    creation limited to 3 RPS.
+  version: "1.0.0"
+  contact:
+    name: CleverTap Developers
+    url: https://developer.clevertap.com/docs
+servers:
+  - url: https://{region}.api.clevertap.com
+    description: CleverTap region-specific API
+    variables:
+      region:
+        default: in1
+        enum: [in1, us1, eu1, sg1, sk1, mec1, aps3]
+        description: CleverTap data-center region
+security:
+  - AccountId: []
+    Passcode: []
+paths:
+  /1/upload:
+    post:
+      summary: Upload user profiles or events
+      description: |
+        Upload an array of records, each typed as "profile" or "event".
+        Maximum 1000 records per call.
+      operationId: upload
+      tags: [Profiles, Events]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [d]
+              properties:
+                d:
+                  type: array
+                  maxItems: 1000
+                  items:
+                    type: object
+                    required: [type]
+                    properties:
+                      type:
+                        type: string
+                        enum: [profile, event]
+                      identity:
+                        type: string
+                      FBID:
+                        type: string
+                      GPID:
+                        type: string
+                      objectId:
+                        type: string
+                      profileData:
+                        type: object
+                      evtName:
+                        type: string
+                      evtData:
+                        type: object
+                      ts:
+                        type: integer
+                        description: Unix epoch seconds
+      responses:
+        '200':
+          description: Upload accepted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  processed:
+                    type: integer
+                  unprocessed:
+                    type: array
+                    items:
+                      type: object
+        '429':
+          description: Concurrency / rate limit exceeded
+  /1/profile.json:
+    get:
+      summary: Get a user profile
+      operationId: getProfile
+      tags: [Profiles]
+      parameters:
+        - in: query
+          name: identity
+          schema:
+            type: string
+        - in: query
+          name: objectId
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User profile
+  /1/profiles.json:
+    post:
+      summary: Search/query user profiles
+      operationId: queryProfiles
+      tags: [Profiles]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Profile query result
+  /1/events.json:
+    post:
+      summary: Query events
+      operationId: queryEvents
+      tags: [Events]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Events query result
+  /1/counts/event.json:
+    post:
+      summary: Get event counts
+      operationId: getEventCounts
+      tags: [Reports]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Event counts
+  /1/counts/profile.json:
+    post:
+      summary: Get profile counts
+      operationId: getProfileCounts
+      tags: [Reports]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Profile counts
+  /1/targets/create.json:
+    post:
+      summary: Create a campaign
+      description: |
+        Create a campaign across push, email, sms, webpush, whatsapp,
+        webhook, or notificationinbox channels.
+      operationId: createCampaign
+      tags: [Campaigns]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, target_mode, content, when]
+              properties:
+                name:
+                  type: string
+                target_mode:
+                  type: string
+                  enum: [push, email, sms, webpush, whatsapp, webhook, notificationinbox]
+                where:
+                  type: object
+                content:
+                  type: object
+                when:
+                  type: string
+                estimate_only:
+                  type: boolean
+                draft:
+                  type: boolean
+                segment:
+                  type: string
+                labels:
+                  type: array
+                  items:
+                    type: string
+                respect_frequency_caps:
+                  type: boolean
+                send_to_all_devices:
+                  type: boolean
+      responses:
+        '200':
+          description: Campaign created or estimated
+  /1/targets/stop.json:
+    post:
+      summary: Stop a campaign
+      operationId: stopCampaign
+      tags: [Campaigns]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+      responses:
+        '200':
+          description: Stopped
+  /1/targets/result.json:
+    get:
+      summary: Get campaign result/report
+      operationId: getCampaignResult
+      tags: [Campaigns]
+      parameters:
+        - in: query
+          name: req_id
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Campaign result
+  /1/disassociate:
+    post:
+      summary: Disassociate (delete) user profiles
+      operationId: disassociateProfile
+      tags: [Profiles]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Disassociated
+components:
+  securitySchemes:
+    AccountId:
+      type: apiKey
+      in: header
+      name: X-CleverTap-Account-Id
+      description: CleverTap account identifier
+    Passcode:
+      type: apiKey
+      in: header
+      name: X-CleverTap-Passcode
+      description: CleverTap account or user passcode
