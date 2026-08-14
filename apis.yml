@@ -15,7 +15,7 @@ accessModel:
   generated: '2026-07-22'
   method: derived
 created: '2024-11-14'
-modified: '2026-04-26'
+modified: '2026-08-13'
 type: Index
 access: 3rd-Party
 position: Consumer
@@ -42,6 +42,7 @@ apis:
   - Profiles
   - User Data
   humanURL: https://developer.clevertap.com/docs/profile-api
+  baseURL: https://api.clevertap.com
   properties:
   - url: https://developer.clevertap.com/docs/profile-api
     type: Documentation
@@ -54,6 +55,7 @@ apis:
   - Events
   - Tracking
   humanURL: https://developer.clevertap.com/docs/event-api
+  baseURL: https://api.clevertap.com
   properties:
   - url: https://developer.clevertap.com/docs/event-api
     type: Documentation
@@ -65,6 +67,7 @@ apis:
   - Campaigns
   - Messaging
   humanURL: https://developer.clevertap.com/docs/create-a-campaign-api
+  baseURL: https://api.clevertap.com
   properties:
   - url: https://developer.clevertap.com/docs/create-a-campaign-api
     type: Documentation
@@ -77,6 +80,7 @@ apis:
   - Bulletins
   - Triggers
   humanURL: https://developer.clevertap.com/docs/bulletins-api
+  baseURL: https://api.clevertap.com
   properties:
   - url: https://developer.clevertap.com/docs/bulletins-api
     type: Documentation
@@ -89,6 +93,7 @@ apis:
   - Catalog
   - Product Data
   humanURL: https://developer.clevertap.com/docs/catalog-api
+  baseURL: https://api.clevertap.com
   properties:
   - url: https://developer.clevertap.com/docs/catalog-api
     type: Documentation
@@ -100,6 +105,7 @@ apis:
   - Audiences
   - Lists
   humanURL: https://developer.clevertap.com/docs/custom-list-api
+  baseURL: https://api.clevertap.com
   properties:
   - url: https://developer.clevertap.com/docs/custom-list-api
     type: Documentation
@@ -110,6 +116,7 @@ apis:
   - Feature Flags
   - Remote Config
   humanURL: https://developer.clevertap.com/docs/remote-config-api
+  baseURL: https://api.clevertap.com
   properties:
   - url: https://developer.clevertap.com/docs/remote-config-api
     type: Documentation
@@ -121,6 +128,7 @@ apis:
   - Analytics
   - Counts
   humanURL: https://developer.clevertap.com/docs/real-time-counts-api
+  baseURL: https://api.clevertap.com
   properties:
   - url: https://developer.clevertap.com/docs/real-time-counts-api
     type: Documentation
@@ -129,6 +137,7 @@ apis:
   name: CleverTap Campaigns API
   description: The Campaigns API from CleverTap — 3 operation(s) for campaigns.
   humanURL: https://developer.clevertap.com/docs/profile-api
+  baseURL: https://api.clevertap.com
   tags:
   - Campaigns
   properties:
@@ -138,6 +147,7 @@ apis:
   name: CleverTap Events API
   description: The Events API from CleverTap — 2 operation(s) for events.
   humanURL: https://developer.clevertap.com/docs/profile-api
+  baseURL: https://api.clevertap.com
   tags:
   - Events
   properties:
@@ -147,6 +157,7 @@ apis:
   name: CleverTap Profiles API
   description: The Profiles API from CleverTap — 4 operation(s) for profiles.
   humanURL: https://developer.clevertap.com/docs/profile-api
+  baseURL: https://api.clevertap.com
   tags:
   - Profiles
   properties:
@@ -156,6 +167,7 @@ apis:
   name: CleverTap Reports API
   description: The Reports API from CleverTap — 2 operation(s) for reports.
   humanURL: https://developer.clevertap.com/docs/profile-api
+  baseURL: https://api.clevertap.com
   tags:
   - Reports
   properties:
@@ -198,6 +210,73 @@ common:
     url: https://developer.clevertap.com/llms.txt
   - url: https://clevertap.com/blog
     type: Blog
+  - type: Packages
+    url: packages/clevertap-packages.yml
+  - type: SDKs
+    url: packages/clevertap-packages.yml
+  - type: WellKnown
+    url: well-known/clevertap-well-known.yml
+  - type: MCPServer
+    url: mcp/clevertap-mcp.yml
+  - type: ToolCrosswalk
+    url: mcp/clevertap-tool-crosswalk.yml
+  - type: LLMsTxt
+    url: llms/clevertap-llms.txt
+  - type: OAuthScopes
+    url: scopes/clevertap-scopes.yml
+  - type: Conventions
+    url: conventions/clevertap-conventions.yml
+  - type: ErrorCatalog
+    url: errors/clevertap-error-codes.yml
+  - type: Lifecycle
+    url: lifecycle/clevertap-lifecycle.yml
+  - type: ChangeLog
+    url: changelog/clevertap-changelog.yml
+  - type: ChangeLog
+    url: https://developer.clevertap.com/docs/changelog
+  - type: Conformance
+    url: conformance/clevertap-conformance.yml
+  - type: Compliance
+    url: https://clevertap.com/security/
+  - type: Webhooks
+    url: asyncapi/clevertap-webhooks.yml
+  - type: DataModel
+    url: data-model/clevertap-data-model.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: Overlay
+    url: overlays/clevertap-profiles-overlay.yaml
+  - type: Overlay
+    url: overlays/clevertap-events-overlay.yaml
+  - type: Overlay
+    url: overlays/clevertap-campaigns-overlay.yaml
+  - type: Overlay
+    url: overlays/clevertap-reports-overlay.yaml
+  - type: Plans
+    url: plans/clevertap-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/clevertap-rate-limits.yml
+  - type: FinOps
+    url: finops/clevertap-finops.yml
+  - type: Postman
+    url: https://developer.clevertap.com/docs/clevertap-postman-collection
+  - type: APIReference
+    url: https://developer.clevertap.com/docs/api-reference
+  - type: GettingStarted
+    url: https://developer.clevertap.com/docs/getting-started
+  - type: Quickstart
+    url: https://developer.clevertap.com/docs/api-quickstart-guide
+  - type: Support
+    url: https://help.clevertap.com/
+  - type: SignUp
+    url: https://eu1.dashboard.clevertap.com/self-serve.html
+  - type: Login
+    url: https://eu1.dashboard.clevertap.com/
 maintainers:
   - FN: Kin Lane
     email: kinlane@gmail.com
+x-enrichment:
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 23
+  pass: local-v1
