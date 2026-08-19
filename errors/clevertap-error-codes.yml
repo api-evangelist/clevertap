@@ -1,0 +1,183 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.clevertap.com/docs/api-errors
+docs:
+  - https://developer.clevertap.com/docs/api-errors
+  - https://developer.clevertap.com/docs/api-error-cases
+format: json
+rfc9457: false
+description: >-
+  CleverTap's published error registry. Two layers: conventional HTTP status
+  codes that apply across every endpoint, and CleverTap's own numeric
+  application codes returned per-record inside the `unprocessed` array of a batch
+  upload. The numeric codes are the operationally important ones — a batch upload
+  returns HTTP 200 while individual records fail with a 5xx-shaped numeric code
+  in the body, so an agent that checks only the HTTP status will silently drop
+  data.
+envelope:
+  transport: HTTP status code
+  body_field: unprocessed[]
+  per_record_fields:
+    - status
+    - code
+    - error
+  note: >-
+    Batch endpoints return HTTP 200 with `processed` (count) and `unprocessed`
+    (array). Each unprocessed entry carries a numeric CleverTap code from the
+    table below.
+
+http_status:
+  - status: 200
+    title: OK
+    description: The request has been successfully processed.
+    class: success
+  - status: 201
+    title: Created
+    description: The request has been fulfilled, creating one or more new resources.
+    class: success
+  - status: 202
+    title: Accepted
+    description: The request has been received for processing but has yet to be completed.
+    class: success
+  - status: 204
+    title: No Content
+    description: >-
+      The server has successfully fulfilled the request and there is no additional
+      content to send in the response body.
+    class: success
+  - status: 400
+    title: Bad Request
+    description: Invalid parameter passed.
+    class: client
+    remediation: Validate the request body against the endpoint reference before retrying.
+  - status: 401
+    title: Unauthorized
+    description: Invalid credentials or URL.
+    class: client
+    remediation: >-
+      Check X-CleverTap-Account-Id and X-CleverTap-Passcode, and confirm you are
+      calling the host for your account's region — the wrong regional host
+      presents as a credential failure.
+  - status: 403
+    title: Forbidden
+    description: Operation is not allowed.
+    class: client
+  - status: 404
+    title: Not Found
+    description: The resource does not exist or cannot be found.
+    class: client
+  - status: 405
+    title: Method Not Allowed
+    description: >-
+      The server knows the request method but it is not supported by the target
+      resource.
+    class: client
+  - status: 409
+    title: Conflict
+    description: Resource already exists.
+    class: client
+  - status: 429
+    title: Too Many Requests
+    description: API request limit exceeded — "Too many concurrent requests".
+    class: client
+    remediation: >-
+      Reduce in-flight parallelism to the documented per-API concurrency ceiling
+      (3 for most APIs, 15 for the upload endpoints). No Retry-After is returned.
+    see: rate-limits/clevertap-rate-limits.yml
+  - status: 500
+    title: Internal Server Error
+    description: An error within the API.
+    class: server
+  - status: 503
+    title: Service Unavailable
+    description: The system is unavailable. Try again later.
+    class: server
+
+application_codes:
+  - api: Upload Events
+    endpoint: /1/upload
+    docs: https://developer.clevertap.com/docs/upload-events-api
+    codes:
+      - code: 509
+        message: Event name mandatory
+      - code: 512
+        message: Invalid event structure
+      - code: 513
+        message: Raised a restricted system event
+      - code: 522
+        message: Event properties limit exceeded
+      - code: 523
+        message: Missing identity
+      - code: 524
+        message: Data neither event nor profile
+      - code: 525
+        message: Timestamp not in UNIX epoch format
+      - code: 526
+        message: objectId invalid
+      - code: 528
+        message: Discarded event is raised
+      - code: 555
+        message: Miscellaneous server error
+  - api: Upload User Profiles
+    endpoint: /1/upload
+    docs: https://developer.clevertap.com/docs/upload-user-profiles-api
+    codes:
+      - code: 514
+        message: Gender invalid
+      - code: 515
+        message: Email invalid
+      - code: 516
+        message: Phone number invalid
+      - code: 517
+        message: Employment status invalid
+      - code: 518
+        message: Education status invalid
+      - code: 519
+        message: Marital status invalid
+      - code: 520
+        message: Age invalid
+      - code: 523
+        message: Missing identity
+      - code: 524
+        message: Data neither event nor profile
+      - code: 525
+        message: Timestamp not an epoch
+      - code: 526
+        message: objectId invalid
+      - code: 555
+        message: Miscellaneous server error
+  - api: Upload Device Tokens
+    docs: https://developer.clevertap.com/docs/upload-device-tokens-api
+    codes:
+      - code: 530
+        message: Invalid 'objectId'
+      - code: 531
+        message: Invalid token data
+      - code: 532
+        message: Token 'id' is not present
+      - code: 533
+        message: Token 'type' is not present
+      - code: 534
+        message: Token 'type' is not valid for 'objectId'
+      - code: 535
+        message: Invalid token data
+
+related:
+  - name: Wallet and Coupon API error cases
+    url: https://developer.clevertap.com/docs/api-error-cases
+    note: >-
+      The Promo product family (Wallet, Coupon, Partner Vouchers) publishes its
+      own custom error responses on a separate page.
+
+summary:
+  http_statuses: 13
+  application_codes: 22
+  distinct_application_codes: 20
+  rfc9457: false
+  problem_json: false
+
+x-evidence:
+  fetched: '2026-08-13'
+  url: https://developer.clevertap.com/docs/api-errors
+  http_status: 200
+  page_updated: '2025-12-14'

@@ -1,0 +1,127 @@
+generated: '2026-08-13'
+method: probed
+status: published
+source: https://mcp.clevertap.com/mcp
+description: >-
+  CleverTap operates a first-party remote MCP server at mcp.clevertap.com. The
+  server is OAuth-protected end to end, so tools/list and initialize both return
+  401 anonymously and the live tool schemas cannot be enumerated without
+  credentials. Presence is established from protocol-level evidence rather than
+  marketing copy: the endpoint returns an `Mcp-Session-Id` response header, a
+  `WWW-Authenticate: Bearer resource_metadata=...` challenge, and it publishes
+  both an RFC 9728 Protected Resource document and an RFC 8414 Authorization
+  Server Metadata document anonymously.
+
+deployment:
+  mode: remote
+  endpoint: https://mcp.clevertap.com/mcp
+  auth: oauth
+  verified: probed
+
+server:
+  name: clevertap
+  transport: http
+  url: https://mcp.clevertap.com/mcp
+  resource: https://mcp.clevertap.com
+  session_header: Mcp-Session-Id
+
+authorization:
+  model: OAuth 2.1 with dynamic client registration
+  issuer: https://mcp.clevertap.com/
+  authorization_endpoint: https://mcp.clevertap.com/oauth/authorize
+  token_endpoint: https://mcp.clevertap.com/oauth/token
+  registration_endpoint: https://mcp.clevertap.com/oauth/register
+  grant_types_supported:
+    - authorization_code
+    - refresh_token
+  code_challenge_methods_supported:
+    - S256
+  token_endpoint_auth_methods_supported:
+    - none
+  scopes_supported:
+    - openid
+    - profile
+    - email
+    - offline_access
+  bearer_methods_supported:
+    - header
+  resource_documentation: https://developer.clevertap.com/docs
+  metadata:
+    - well-known/clevertap-oauth-protected-resource.json
+    - well-known/clevertap-oauth-authorization-server.json
+
+tools:
+  status: gated
+  note: >-
+    NOT ENUMERATED. tools/list returns
+    {"jsonrpc":"2.0","error":{"code":-32001,...}} / HTTP 401 without a bearer
+    token, and CleverTap publishes no tool list in its docs or llms.txt. The
+    real tool names and inputSchemas require authenticated introspection. No
+    tool list is asserted here; the derived REST-side capability map lives in
+    mcp/clevertap-tool-crosswalk.yml.
+
+secondary_servers:
+  - name: clevertap-developer-docs
+    url: https://developer.clevertap.com/mcp
+    transport: http
+    auth: oauth
+    status: gated
+    vendor: ReadMe (developer docs platform)
+    note: >-
+      The developer documentation host also answers JSON-RPC on /mcp with
+      {"jsonrpc":"2.0","error":{"code":-32001,"message":"Authorization
+      required"},"id":null}. Response headers carry ReadMe-specific CORS
+      allowances (x-readme-project-id, x-readme-conversation-id), so this is the
+      documentation-platform MCP server rather than the CleverTap product API
+      server.
+
+third_party:
+  - name: clevertap-mcp
+    registry: npm
+    url: https://www.npmjs.com/package/clevertap-mcp
+    version: 1.0.0
+    published: '2026-03-30'
+    official: false
+    note: >-
+      NOT FIRST-PARTY. An npm package named clevertap-mcp exists ("MCP Server for
+      the CleverTap REST API") but its sole npm maintainer is an individual
+      account, it declares no repository/homepage/author, and no MCP repository
+      exists in the github.com/CleverTap organization (92 repos enumerated
+      2026-08-13). Recorded for completeness only; it is not counted as a
+      CleverTap-shipped surface.
+
+ownership:
+  verified: true
+  evidence: >-
+    mcp.clevertap.com is a CleverTap-controlled subdomain, and its RFC 9728
+    Protected Resource document names resource "https://mcp.clevertap.com" with
+    resource_documentation "https://developer.clevertap.com/docs" — CleverTap's
+    own developer portal.
+
+x-evidence:
+  fetched: '2026-08-13'
+  probes:
+    - url: https://mcp.clevertap.com/mcp
+      method: POST
+      body: '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+      http_status: 401
+      response_headers:
+        Mcp-Session-Id: present
+        WWW-Authenticate: >-
+          Bearer resource_metadata="https://mcp.clevertap.com/.well-known/oauth-protected-resource",
+          scope="openid profile email"
+    - url: https://mcp.clevertap.com/.well-known/oauth-protected-resource
+      http_status: 200
+      content_type: application/json
+    - url: https://mcp.clevertap.com/.well-known/oauth-authorization-server
+      http_status: 200
+      content_type: application/json
+    - url: https://developer.clevertap.com/mcp
+      method: POST
+      http_status: 401
+      body_returned: '{"jsonrpc":"2.0","error":{"code":-32001,"message":"Authorization required"},"id":null}'
+  caveat: >-
+    Every path on mcp.clevertap.com returns the same 401 + Mcp-Session-Id, so the
+    exact routing path is not independently proven by the probe alone. The /mcp
+    path is the one probed and the RFC 9728 resource identifier is
+    https://mcp.clevertap.com; both are recorded rather than one being inferred.

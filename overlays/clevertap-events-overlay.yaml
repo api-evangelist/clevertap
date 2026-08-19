@@ -1,0 +1,59 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for CleverTap Events API
+  version: 1.0.0
+extends: openapi/clevertap-events-api-openapi.yml
+x-provenance:
+  generated: '2026-08-13'
+  method: generated
+  source: >-
+    Derived from the CleverTap developer documentation harvested 2026-08-13. This
+    overlay records API Evangelist enhancements only; the underlying OpenAPI is
+    never mutated.
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: clevertap
+      x-apievangelist-artifacts:
+        authentication: authentication/clevertap-authentication.yml
+        conventions: conventions/clevertap-conventions.yml
+        errors: errors/clevertap-error-codes.yml
+        rate-limits: rate-limits/clevertap-rate-limits.yml
+        lifecycle: lifecycle/clevertap-lifecycle.yml
+        data-model: data-model/clevertap-data-model.yml
+        webhooks: asyncapi/clevertap-webhooks.yml
+        mcp: mcp/clevertap-mcp.yml
+      x-api-base-default: https://api.clevertap.com
+      x-api-regions:
+        - {region: Europe (default), host: api.clevertap.com}
+        - {region: India, host: in1.api.clevertap.com}
+        - {region: Singapore, host: sg1.api.clevertap.com}
+        - {region: United States, host: us1.api.clevertap.com}
+        - {region: Indonesia, host: aps3.api.clevertap.com}
+        - {region: Middle East (UAE), host: mec1.api.clevertap.com}
+      x-idempotency-supported: false
+      x-pagination-style: cursor
+      x-error-format: json
+      x-rfc9457: false
+  - target: $.info
+    update:
+      termsOfService: https://clevertap.com/terms-of-service/
+  - target: $.info.contact
+    update:
+      url: https://developer.clevertap.com/docs/api-reference
+  - target: $.components.securitySchemes.AccountId
+    update:
+      x-docs: https://developer.clevertap.com/docs/authentication
+      x-rotation-policy: none-published
+      x-expiry: none
+  - target: $.components.securitySchemes.Passcode
+    update:
+      x-docs: https://developer.clevertap.com/docs/authentication
+      x-rotation-policy: none-published
+      x-expiry: none
+  - target: $.paths.*.*
+    update:
+      x-rate-limit-model: concurrency
+      x-rate-limit-headers: none
+      x-rate-limit-status: 429
+      x-error-catalog: errors/clevertap-error-codes.yml

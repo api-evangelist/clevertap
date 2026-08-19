@@ -1,0 +1,1 @@
+{"resource_documentation":"https://developer.clevertap.com/docs","scopes_supported":["openid","profile","email","offline_access"],"resource":"https://mcp.clevertap.com","authorization_servers":["https://mcp.clevertap.com/"],"bearer_methods_supported":["header"]}

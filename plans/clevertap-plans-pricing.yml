@@ -3,8 +3,11 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
 provider: CleverTap
 providerId: clevertap
+generated: '2026-08-13'
+method: searched
+source: https://clevertap.com/pricing/
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-08-13'
 tags:
   - Audiences
   - Customer Engagement
@@ -13,152 +16,151 @@ tags:
   - Mobile Engagement
   - Push Notifications
   - User Behavior
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+description: >-
+  CleverTap's published plans, read from its own pricing page on 2026-08-13.
+  This file REPLACES a 2026-05-04 bulk-sweep scaffold whose tiers, quotas and
+  request prices were invented placeholders and did not correspond to anything
+  CleverTap publishes. Pricing is packaged per MAU (monthly active users), not
+  per API request — CleverTap does not meter or price the API separately, and
+  publishes no per-request quota or overage rate at any tier. Only the entry
+  tier carries a list price; the two upper tiers are contact-sales.
+pricing_model:
+  unit: MAU
+  unit_label: Monthly Active Users
+  billing_period: month
+  api_metered_separately: false
+  note: >-
+    API access is included with the platform subscription. No plan on the pricing
+    page attaches an API call quota, an API overage rate, or a per-endpoint
+    entitlement.
+currency_note: >-
+  The pricing page localizes by visitor location. Observed from a US network path
+  it rendered INR list prices; the self-serve checkout link on clevertap.com
+  carries both an INR and a USD variant of the same ESSENTIAL / 5,000 MAU plan,
+  so a USD list price exists but is not stated on the page as fetched. Prices
+  below are recorded in the currency they were observed in.
+promotion:
+  name: Mid-Year Sale 2026
+  discount: 90% off CleverTap Essentials for 6 months
+  observed: '2026-08-13'
+trial:
+  available: true
+  length_days: 30
+  note: 'Pricing page states: "Billing will start post 30-day trial."'
+plan_count: 3
 plans:
-  - id: clevertap-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the CleverTap API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: CleverTap Profile API
-      - name: CleverTap Event API
-      - name: CleverTap Campaign API
-      - name: CleverTap Bulletins API
-      - name: CleverTap Catalog API
-      - name: CleverTap Custom List API
-      - name: CleverTap Remote Config API
-      - name: CleverTap Real-Time Counts API
-  - id: clevertap-pro
-    name: Professional
+  - id: clevertap-essentials
+    name: Essentials
     type: paid
-    description: Production tier for CleverTap. Provides higher quotas, priority support, and access to
-      the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains: []
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains: []
-        unit: 1000
-        price: TBD
-        userMultiplied: false
+    description: >-
+      Entry self-serve tier — "Start with the basics of engagement to foster
+      meaningful customer interactions." Includes omnichannel campaign
+      orchestration, behavioral segmentation, and experimentation.
+    self_serve: true
+    price: '6000'
+    promotional_price: '600'
+    currency: INR
+    billing_period: month
+    price_note: >-
+      List ₹6,000/month, shown as ₹600/month under the Mid-Year Sale 2026 90%
+      discount. Taxes apply; add-ons excluded. The price shown corresponds to the
+      lowest MAU band.
+    signup: https://eu1.dashboard.clevertap.com/self-serve.html
+    quota:
+      metric: MAU
+      bands:
+        - Up to 5,000 MAU
+        - Up to 20,000 MAU
+        - Up to 40,000 MAU
+        - Up to 60,000 MAU
+        - Up to 80,000 MAU
+        - Up to 100,000 MAU
+        - 100,000+ MAU
+      note: >-
+        MAU band is selected at checkout and drives the price. CleverTap does not
+        publish the per-band price ladder on the pricing page; only the entry
+        band's price is displayed.
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: CleverTap Profile API
-      - name: CleverTap Event API
-      - name: CleverTap Campaign API
-      - name: CleverTap Bulletins API
-      - name: CleverTap Catalog API
-      - name: CleverTap Custom List API
-      - name: CleverTap Remote Config API
-      - name: CleverTap Real-Time Counts API
-  - id: clevertap-enterprise
-    name: Enterprise
+      - name: Craft Omni-Channel Experiences
+      - name: Curate your Audience
+      - name: Experiment, Measure and Optimize
+      - name: Behavioral Analytics (funnels, cohorts, events, trends, session analytics)
+      - name: Push Notifications
+      - name: In-App Messages
+      - name: App Inbox
+      - name: Web Push / Web Pop-up / Web Native Display
+      - name: Email
+      - name: SMS Connect
+      - name: Webhooks
+      - name: Journeys
+      - name: IntelliNODE
+  - id: clevertap-advanced
+    name: Advanced
     type: enterprise
-    description: Custom-negotiated tier for CleverTap. Includes dedicated capacity, contractual SLAs,
-      security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains: []
-        unit: 1
-        price: custom
-        userMultiplied: false
+    description: >-
+      "Deliver rich contextualization at every step of your customer's journey
+      with dynamic inputs and triggers." Everything in Essentials plus
+      hyper-personalization, automated segmentation, advanced analytics (pivots,
+      flows), and premium engagement channels.
+    self_serve: false
+    price: contact-sales
+    currency: null
+    billing_period: month
+    price_note: 'Pricing page shows "Let''s Talk" / "Get a Demo" — no list price published.'
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: CleverTap Profile API
-      - name: CleverTap Event API
-      - name: CleverTap Campaign API
-      - name: CleverTap Bulletins API
-      - name: CleverTap Catalog API
-      - name: CleverTap Custom List API
-      - name: CleverTap Remote Config API
-      - name: CleverTap Real-Time Counts API
+      - name: Everything in Essentials
+      - name: Win with Hyper-Personalization
+      - name: Automate Segmentation
+      - name: Run Advanced Analytics
+      - name: Use Premium Engagement Channels
+      - name: Scalable, Interoperable Platform Integrations
+  - id: clevertap-cutting-edge
+    name: Cutting Edge
+    type: enterprise
+    description: >-
+      "Automate intelligent customer interactions by using Next-Gen tools of
+      driving engagement, powered by CleverAI." Everything in Advanced plus
+      AI-driven journey orchestration, predictive segmentation, and real-time
+      product recommendations.
+    self_serve: false
+    price: contact-sales
+    currency: null
+    billing_period: month
+    price_note: 'Pricing page shows "Let''s Talk" / "Get a Demo" — no list price published.'
+    elements:
+      - name: Everything in Advanced
+      - name: Add Intelligence to your Campaigns (IntelliNODE)
+      - name: Predictive Segmentation
+      - name: Real-time Product Recommendations
+      - name: Simplify Execution (content library, collaboration tools)
+add_ons:
+  note: >-
+    Priced separately; the pricing page names them but publishes no prices.
+  items:
+    - Advanced E-mail
+    - WhatsApp
+    - Message Archiving
+    - Product Experiences
+    - Reminders
+    - Visual Editor
+    - Promos
+    - RCS
+    - Pivots
+    - Flows
+    - Advanced cohorts with retention modes
+    - Aggregated Event Properties
+    - Composite Events
+    - Segment Comparison
+    - Functions and Formulas
+    - Event Comparison
+    - App Native Display
+    - Google Ads
+    - Facebook Audiences
+    - TikTok
+x-evidence:
+  fetched: '2026-08-13'
+  url: https://clevertap.com/pricing/
+  http_status: 200
 maintainers:
   - FN: Kin Lane
     email: kinlane@gmail.com

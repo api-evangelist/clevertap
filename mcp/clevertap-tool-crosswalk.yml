@@ -1,0 +1,121 @@
+generated: '2026-08-13'
+method: derived
+source: mcp/clevertap-mcp.yml + openapi/ + https://developer.clevertap.com/docs/api-reference
+description: >-
+  Crosswalk between the CleverTap agent surface and its REST contract. CleverTap
+  runs a real remote MCP server (mcp.clevertap.com) but the server is
+  OAuth-gated: tools/list returns 401 anonymously and no tool list is published
+  in the docs or in llms.txt. There is therefore NO published tool inventory to
+  bind. Rather than guess tool names, this crosswalk records the divergence
+  honestly: the crosswalk[] table is empty, and rest_only[] enumerates the REST
+  operations an agent would need bound.
+
+surfaces:
+  openapi:
+    files:
+      - openapi/clevertap-profiles-api-openapi.yml
+      - openapi/clevertap-events-api-openapi.yml
+      - openapi/clevertap-campaigns-api-openapi.yml
+      - openapi/clevertap-reports-api-openapi.yml
+      - openapi/_original/clevertap-openapi.yml
+    gated: false
+    note: >-
+      No OpenAPI is published by CleverTap at any probed location. The specs in
+      this repo were authored by API Evangelist from the public REST reference at
+      developer.clevertap.com. They cover 10 of the documented operations; the
+      documented REST reference is broader (catalog, custom list, remote config,
+      settings, content blocks, promos, wallet, coupon, token vault, SCIM).
+  graphql:
+    endpoint: null
+    gated: null
+    note: >-
+      No GraphQL surface. POST /graphql on api.clevertap.com and
+      us1.api.clevertap.com both return HTTP 405 "HTTP method POST is not
+      supported by this URL".
+  mcp:
+    url: https://mcp.clevertap.com/mcp
+    gated: true
+    note: >-
+      tools/list returns HTTP 401 with a WWW-Authenticate Bearer challenge. Tool
+      names and inputSchemas require authenticated introspection.
+
+crosswalk: []
+
+mcp_only: []
+
+rest_only:
+  - capability: Profiles
+    note: Documented REST operations with no bindable MCP tool (tool list is gated).
+    operations:
+      - operationId: upload
+        path: /1/upload
+        method: post
+        spec: openapi/clevertap-profiles-api-openapi.yml
+      - operationId: getProfile
+        path: /1/profile.json
+        method: get
+        spec: openapi/clevertap-profiles-api-openapi.yml
+      - operationId: queryProfiles
+        path: /1/profiles.json
+        method: post
+        spec: openapi/clevertap-profiles-api-openapi.yml
+      - operationId: disassociateProfile
+        path: /1/disassociate
+        method: post
+        spec: openapi/clevertap-profiles-api-openapi.yml
+  - capability: Events
+    operations:
+      - operationId: upload
+        path: /1/upload
+        method: post
+        spec: openapi/clevertap-events-api-openapi.yml
+      - operationId: queryEvents
+        path: /1/events.json
+        method: post
+        spec: openapi/clevertap-events-api-openapi.yml
+  - capability: Campaigns
+    operations:
+      - operationId: createCampaign
+        path: /1/targets/create.json
+        method: post
+        spec: openapi/clevertap-campaigns-api-openapi.yml
+      - operationId: stopCampaign
+        path: /1/targets/stop.json
+        method: post
+        spec: openapi/clevertap-campaigns-api-openapi.yml
+      - operationId: getCampaignResult
+        path: /1/targets/result.json
+        method: get
+        spec: openapi/clevertap-campaigns-api-openapi.yml
+  - capability: Reports
+    operations:
+      - operationId: getEventCounts
+        path: /1/counts/event.json
+        method: post
+        spec: openapi/clevertap-reports-api-openapi.yml
+      - operationId: getProfileCounts
+        path: /1/counts/profile.json
+        method: post
+        spec: openapi/clevertap-reports-api-openapi.yml
+
+coverage:
+  tools_named: 0
+  tools_bound: 0
+  mcp_only: 0
+  rest_operations_total: 11
+  rest_operations_with_a_tool: 0
+  blocked_by: mcp-tools-list-oauth-gated
+
+x-evidence:
+  checked: '2026-08-13'
+  probes:
+    - url: https://mcp.clevertap.com/mcp
+      method: POST
+      body: '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+      http_status: 401
+    - url: https://api.clevertap.com/graphql
+      method: POST
+      http_status: 405
+    - url: https://us1.api.clevertap.com/graphql
+      method: POST
+      http_status: 405

@@ -1,0 +1,85 @@
+generated: '2026-08-13'
+method: probed
+source: https://mcp.clevertap.com/.well-known/oauth-authorization-server
+docs: null
+description: >-
+  OAuth scopes CleverTap advertises. Scope applies to ONE surface only: the
+  remote MCP server at mcp.clevertap.com. The CleverTap REST API has no OAuth and
+  therefore no scopes — it authenticates with two static headers
+  (X-CleverTap-Account-Id, X-CleverTap-Passcode) with no scoping, expiry or
+  least-privilege model at all. The scopes below were read from the server's own
+  RFC 8414 and RFC 9728 metadata documents, not from documentation: CleverTap
+  publishes no scopes or permissions reference page.
+applies_to:
+  surface: mcp
+  endpoint: https://mcp.clevertap.com/mcp
+  rest_api_uses_oauth: false
+schemes:
+  - name: MCP OAuth 2.1
+    source: https://mcp.clevertap.com/.well-known/oauth-authorization-server
+    issuer: https://mcp.clevertap.com/
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://mcp.clevertap.com/oauth/authorize
+        tokenUrl: https://mcp.clevertap.com/oauth/token
+        registrationUrl: https://mcp.clevertap.com/oauth/register
+        pkce: S256
+        token_endpoint_auth_methods:
+          - none
+      - flow: refreshToken
+        tokenUrl: https://mcp.clevertap.com/oauth/token
+scopes:
+  - scope: openid
+    description: >-
+      Standard OpenID Connect scope requesting an identity assertion for the
+      authenticating CleverTap dashboard user.
+    flows:
+      - authorizationCode
+    sources:
+      - well-known/clevertap-oauth-authorization-server.json
+      - well-known/clevertap-oauth-protected-resource.json
+  - scope: profile
+    description: Standard OIDC scope for the authenticating user's profile claims.
+    flows:
+      - authorizationCode
+    sources:
+      - well-known/clevertap-oauth-authorization-server.json
+      - well-known/clevertap-oauth-protected-resource.json
+  - scope: email
+    description: Standard OIDC scope for the authenticating user's email address.
+    flows:
+      - authorizationCode
+    sources:
+      - well-known/clevertap-oauth-authorization-server.json
+      - well-known/clevertap-oauth-protected-resource.json
+  - scope: offline_access
+    description: >-
+      Requests a refresh token so the MCP client can keep calling after the
+      access token expires.
+    flows:
+      - authorizationCode
+      - refreshToken
+    sources:
+      - well-known/clevertap-oauth-authorization-server.json
+      - well-known/clevertap-oauth-protected-resource.json
+analysis:
+  granularity: identity-only
+  resource_scopes: 0
+  note: >-
+    All four advertised scopes are OIDC identity scopes. There is NO
+    resource-level or action-level scope — nothing like read:profiles or
+    write:campaigns — so an authorized MCP client receives the full authority of
+    the CleverTap user it authenticated as. Least-privilege delegation to an
+    agent is not expressible on this surface today.
+  challenge_scope: 'openid profile email'
+  challenge_source: >-
+    WWW-Authenticate header on https://mcp.clevertap.com/mcp — Bearer
+    resource_metadata="https://mcp.clevertap.com/.well-known/oauth-protected-resource",
+    scope="openid profile email"
+x-evidence:
+  fetched: '2026-08-13'
+  urls:
+    - url: https://mcp.clevertap.com/.well-known/oauth-authorization-server
+      status: 200
+    - url: https://mcp.clevertap.com/.well-known/oauth-protected-resource
+      status: 200

@@ -1,0 +1,219 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.clevertap.com/docs/clevertap-sdks
+description: >-
+  First-party CleverTap client libraries, read from the provider's own SDK page
+  and confirmed against each package registry's metadata endpoint (npm registry,
+  Maven Central maven-metadata.xml, CocoaPods trunk, pub.dev) or, where the
+  library is distributed only from GitHub, against the repository's latest
+  release tag. CleverTap publishes no PyPI, RubyGems, NuGet, crates.io or
+  pkg.go.dev package; the Python and Ruby entries on its SDK page are example
+  repositories and a community wrapper, recorded here as official:false.
+registries_checked:
+  - npm
+  - Maven Central
+  - CocoaPods
+  - pub.dev
+  - PyPI
+  - RubyGems
+  - crates.io
+  - pkg.go.dev
+  - NuGet
+packages:
+  - language: javascript
+    registry: npm
+    name: clevertap-web-sdk
+    url: https://www.npmjs.com/package/clevertap-web-sdk
+    repository: https://github.com/CleverTap/clevertap-web-sdk
+    install: npm install clevertap-web-sdk
+    official: true
+    version: 2.7.5
+    published: '2026-07-30'
+  - language: javascript
+    registry: npm
+    name: clevertap
+    url: https://www.npmjs.com/package/clevertap
+    repository: https://github.com/CleverTap/clevertap-node
+    install: npm install clevertap
+    official: true
+    version: 1.3.1
+    published: '2026-07-07'
+    note: >-
+      The server-side Node.js wrapper for the CleverTap REST API, published as
+      the bare `clevertap` name (the docs page links the repo, not the package).
+  - language: javascript
+    registry: npm
+    name: clevertap-react-native
+    url: https://www.npmjs.com/package/clevertap-react-native
+    repository: https://github.com/CleverTap/clevertap-react-native
+    install: npm install clevertap-react-native
+    official: true
+    version: 4.2.0
+    published: '2026-06-05'
+  - language: javascript
+    registry: npm
+    name: clevertap-cordova
+    url: https://www.npmjs.com/package/clevertap-cordova
+    repository: https://github.com/CleverTap/clevertap-cordova
+    install: cordova plugin add clevertap-cordova
+    official: true
+    version: 5.0.0
+    published: '2026-04-30'
+  - language: javascript
+    registry: npm
+    name: "@clevertap/clevertap-expo-plugin"
+    url: https://www.npmjs.com/package/@clevertap/clevertap-expo-plugin
+    repository: https://github.com/CleverTap/clevertap-expo-plugin
+    install: npm install @clevertap/clevertap-expo-plugin
+    official: true
+    version: 1.0.0
+    published: '2026-03-26'
+  - language: dart
+    registry: pub.dev
+    name: clevertap_plugin
+    url: https://pub.dev/packages/clevertap_plugin
+    repository: https://github.com/CleverTap/clevertap-flutter
+    install: flutter pub add clevertap_plugin
+    official: true
+    version: 4.1.0
+    published: '2026-06-09'
+  - language: java
+    registry: maven-central
+    name: com.clevertap.android:clevertap-android-sdk
+    url: https://central.sonatype.com/artifact/com.clevertap.android/clevertap-android-sdk
+    repository: https://github.com/CleverTap/clevertap-android-sdk
+    install: implementation 'com.clevertap.android:clevertap-android-sdk:8.4.1'
+    official: true
+    version: 8.4.1
+    published: '2026-08-07'
+    note: >-
+      Version and date read from repo1.maven.org maven-metadata.xml
+      (lastUpdated 20260807135924). The search.maven.org solr index is stale and
+      still reports 7.4.0.
+  - language: java
+    registry: maven-central
+    name: com.clevertap.android:push-templates
+    url: https://central.sonatype.com/artifact/com.clevertap.android/push-templates
+    repository: https://github.com/CleverTap/PushTemplates
+    official: true
+    version: 1.4.0
+    published: '2025-03-10'
+  - language: java
+    registry: maven-central
+    name: com.clevertap.android:clevertap-geofence-sdk
+    url: https://central.sonatype.com/artifact/com.clevertap.android/clevertap-geofence-sdk
+    official: true
+    version: 1.4.0
+    published: '2025-01-06'
+  - language: java
+    registry: maven-central
+    name: com.clevertap.android:clevertap-hms-sdk
+    url: https://central.sonatype.com/artifact/com.clevertap.android/clevertap-hms-sdk
+    official: true
+    version: 1.5.0
+    published: '2025-03-10'
+  - language: java
+    registry: maven-central
+    name: com.clevertap.android:clevertap-xiaomi-sdk
+    url: https://central.sonatype.com/artifact/com.clevertap.android/clevertap-xiaomi-sdk
+    official: true
+    version: 1.5.4
+    published: '2023-10-12'
+  - language: java
+    registry: maven-central
+    name: com.clevertap.android:clevertap-segment-android
+    url: https://central.sonatype.com/artifact/com.clevertap.android/clevertap-segment-android
+    repository: https://github.com/CleverTap/clevertap-segment-android
+    official: true
+    version: 1.7.0
+    published: '2024-11-07'
+  - language: objective-c
+    registry: cocoapods
+    name: CleverTap-iOS-SDK
+    url: https://cocoapods.org/pods/CleverTap-iOS-SDK
+    repository: https://github.com/CleverTap/clevertap-ios-sdk
+    install: pod 'CleverTap-iOS-SDK'
+    official: true
+    version: 7.8.1
+    published: '2026-08-07'
+    note: >-
+      Version read from the CocoaPods trunk API
+      (trunk.cocoapods.org/api/v1/pods/CleverTap-iOS-SDK); owners include the
+      CleverTap_SDK_Team account.
+  - language: csharp
+    registry: github-release
+    name: clevertap-unity-sdk
+    url: https://github.com/CleverTap/clevertap-unity-sdk
+    official: true
+    version: 5.5.4
+    published: '2026-06-29'
+    note: >-
+      Distributed as a Unity package from GitHub releases, not from NuGet. No
+      NuGet package is published, so there is no registry metadata endpoint;
+      version and date come from the repository's latest release tag.
+  - language: cpp
+    registry: github-release
+    name: clevertap-unreal-sdk
+    url: https://github.com/CleverTap/clevertap-unreal-sdk
+    official: true
+    version: 1.3.0
+    published: '2026-08-12'
+    note: Unreal Engine plugin distributed from GitHub releases; no package registry.
+  - language: csharp
+    registry: github-release
+    name: clevertap-xamarin
+    url: https://github.com/CleverTap/clevertap-xamarin
+    official: true
+    version: DotNet-iOS-1.2.0
+    published: '2026-01-14'
+    note: >-
+      Xamarin/.NET binding distributed from GitHub releases; no NuGet package
+      was found, so version comes from the release tag.
+  - language: javascript
+    registry: github
+    name: clevertap-fxos
+    url: https://github.com/CleverTap/clevertap-fxos
+    official: true
+    version: null
+    published: null
+    note: >-
+      KaiOS / Firefox OS SDK. An npm package `clevertap-fxos` 1.1.1 (2021-10-11)
+      exists but the docs page links only the GitHub repository and the repo
+      publishes no releases, so no authoritative current version is recorded.
+  - language: python
+    registry: github
+    name: clevertap-server-api-examples
+    url: https://github.com/CleverTap/clevertap-server-api-examples
+    official: false
+    version: null
+    published: null
+    note: >-
+      Listed on the SDK page as the "CleverTap API Python Wrapper", but it is an
+      examples repository under the CleverTap org with no PyPI package
+      (pypi.org/pypi/clevertap/json returns 404). Not a packaged, versioned SDK.
+  - language: ruby
+    registry: rubygems
+    name: clevertap-ruby
+    url: https://github.com/tradeo/clevertap-ruby
+    official: false
+    version: null
+    published: null
+    note: >-
+      Explicitly listed by CleverTap as a community-built library (built by
+      Tradeo). rubygems.org/api/v1/gems/clevertap.json returns "This rubygem
+      could not be found."
+summary:
+  official_count: 17
+  languages:
+    - javascript
+    - dart
+    - java
+    - objective-c
+    - csharp
+    - cpp
+  most_recent_release: '2026-08-12'
+  note: >-
+    Every first-party mobile and web SDK has shipped a release within the last
+    six months; there is no abandonment signal in the client-library estate.
+    There is no first-party Python, Ruby, Go, PHP or .NET server-side SDK — the
+    only server-side library CleverTap ships is the Node.js wrapper.

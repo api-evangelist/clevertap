@@ -1,0 +1,73 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.clevertap.com/docs/changelog
+description: >-
+  Versioning, deprecation, SLA and status posture for the CleverTap API surface.
+  CleverTap runs a public status page and a dated SDK changelog, but publishes no
+  API deprecation policy, no Sunset/Deprecation header support and no public SLA
+  document.
+
+versioning:
+  scheme: uri-path
+  current: '1'
+  example: https://api.clevertap.com/1/upload
+  secondary: /nx/v2/ (SCIM provisioning)
+  docs: https://developer.clevertap.com/docs/common-api-components
+  policy_url: null
+  note: >-
+    Version 1 has carried the entire REST surface for the life of the public API.
+    No version negotiation header, no dated version train, no published policy
+    for how a version 2 would be introduced or how long version 1 is supported.
+
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  note: >-
+    NO DEPRECATION POLICY. CleverTap publishes no API deprecation or sunset
+    policy, does not document RFC 8594 Sunset or Deprecation response headers,
+    and gives no notice window for removing an endpoint. SDK-level breaking
+    changes (for example the Android minimum API level moving to 23 in Android
+    SDK 8.1.0) are announced only in the monthly SDK changelog. No `Deprecation`
+    pointer is emitted for this provider.
+
+sla:
+  url: null
+  uptime_target: null
+  published: false
+  note: >-
+    No public SLA document. The pricing page lists "World-class Support" as a
+    plan attribute but attaches no uptime commitment; contractual SLAs are
+    implied to be part of the enterprise (Advanced / Cutting Edge) sales motion.
+
+status_page:
+  url: https://status.clevertap.com/
+  status: 200
+  note: Public, unauthenticated status page.
+
+changelog:
+  url: https://developer.clevertap.com/docs/changelog
+  cadence: monthly
+  scope: SDK releases
+  note: >-
+    The developer changelog covers SDK releases only. Product and UI releases are
+    published separately at https://docs.clevertap.com/docs/whats-new. Neither is
+    a REST API changelog — CleverTap publishes no dated record of REST endpoint
+    additions, changes or removals.
+  detail: changelog/clevertap-changelog.yml
+
+deprecated_operations: []
+
+x-evidence:
+  checked: '2026-08-13'
+  probes:
+    - url: https://status.clevertap.com/
+      status: 200
+    - url: https://developer.clevertap.com/docs/changelog
+      status: 200
+    - url: https://clevertap.com/roadmap/
+      status: 200
+      note: >-
+        Redirects to https://clevertap.com/ — there is no roadmap page. No
+        `Roadmap` pointer is emitted.

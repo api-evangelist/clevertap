@@ -1,0 +1,162 @@
+generated: '2026-08-13'
+method: probed
+source: live GET probes of every apis.yml / OpenAPI servers[] host
+description: >-
+  Well-known discovery probe across every CleverTap host. Two RFC documents were
+  found and saved, both on the MCP host: an RFC 9728 OAuth Protected Resource
+  document and an RFC 8414 Authorization Server Metadata document. Every other
+  well-known path missed. The regional API hosts (*.api.clevertap.com and
+  api.clevertap.com) answer HTTP 200 with a ZERO-BYTE body for EVERY path,
+  including a deliberately bogus control path, so those 200s are recorded as
+  misses, not documents.
+hosts:
+  - host: https://mcp.clevertap.com
+    note: CleverTap remote MCP server host; the only host serving real well-known documents.
+    documents:
+      - path: /.well-known/oauth-protected-resource
+        status: 200
+        content_type: application/json
+        spec: RFC 9728 OAuth 2.0 Protected Resource Metadata
+        file: clevertap-oauth-protected-resource.json
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        content_type: application/json
+        spec: RFC 8414 OAuth 2.0 Authorization Server Metadata
+        file: clevertap-oauth-authorization-server.json
+      - path: /.well-known/openid-configuration
+        status: 500
+      - path: /.well-known/agent-card.json
+        status: 500
+      - path: /.well-known/agent.json
+        status: 500
+  - host: https://api.clevertap.com
+    note: >-
+      SOFT-200 CATCH-ALL. Every path returns HTTP 200 with a zero-byte body,
+      including the control path /this-path-does-not-exist-xyz123. None of these
+      200s carries a document; all are recorded as misses.
+    soft_200: true
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        body_bytes: 0
+        result: miss
+      - path: /.well-known/openid-configuration
+        status: 200
+        body_bytes: 0
+        result: miss
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        body_bytes: 0
+        result: miss
+      - path: /.well-known/api-catalog
+        status: 200
+        body_bytes: 0
+        result: miss
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        body_bytes: 0
+        result: miss
+      - path: /.well-known/agent-card.json
+        status: 200
+        body_bytes: 0
+        result: miss
+      - path: /.well-known/agent.json
+        status: 200
+        body_bytes: 0
+        result: miss
+  - host: https://us1.api.clevertap.com
+    note: Same soft-200 catch-all as api.clevertap.com; all paths 200 with a zero-byte body.
+    soft_200: true
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        body_bytes: 0
+        result: miss
+      - path: /.well-known/openid-configuration
+        status: 200
+        body_bytes: 0
+        result: miss
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        body_bytes: 0
+        result: miss
+      - path: /.well-known/api-catalog
+        status: 200
+        body_bytes: 0
+        result: miss
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        body_bytes: 0
+        result: miss
+  - host: https://eu1.api.clevertap.com
+    note: Same soft-200 catch-all; all paths 200 with a zero-byte body.
+    soft_200: true
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        body_bytes: 0
+        result: miss
+      - path: /.well-known/api-catalog
+        status: 200
+        body_bytes: 0
+        result: miss
+  - host: https://developer.clevertap.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/oauth-protected-resource/mcp
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://clevertap.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://docs.clevertap.com
+    documents:
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+summary:
+  documents_found: 2
+  security_txt: false
+  openid_configuration: false
+  api_catalog: false
+  ai_plugin: false
+  agent_card: false
+  soft_200_hosts:
+    - api.clevertap.com
+    - us1.api.clevertap.com
+    - eu1.api.clevertap.com
+x-evidence:
+  checked: '2026-08-13'
+  negative_control:
+    url: https://us1.api.clevertap.com/this-path-does-not-exist-xyz123
+    status: 200
+    body_bytes: 0
+    conclusion: >-
+      The API hosts answer 200 for arbitrary paths with an empty body, so a 200
+      on a well-known path is not evidence that the document exists.

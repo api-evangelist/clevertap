@@ -1,0 +1,49 @@
+generated: '2026-08-13'
+method: generated
+source: >-
+  Generated from this repo's OpenAPI plus the CleverTap developer documentation
+  harvested 2026-08-13. Every operationId referenced in these skills was verified
+  present in the linked spec. CleverTap publishes no AGENTS.md or skill files of
+  its own.
+description: >-
+  Packaged agent operating instructions for the CleverTap REST API, one per
+  marquee flow. Each skill carries the auth model, the regional-host trap, the
+  concurrency ceiling and the error-handling rules an agent needs to use the API
+  correctly rather than merely to call it.
+skills:
+  - file: clevertap-ingest-profiles-and-events.md
+    name: Ingest CleverTap profiles and events
+    api: openapi/clevertap-profiles-api-openapi.yml
+    operations:
+      - upload
+    emphasis: >-
+      Partial success — /1/upload returns HTTP 200 with an unprocessed[] array,
+      so a status-code-only check silently drops data.
+  - file: clevertap-create-and-report-on-a-campaign.md
+    name: Create a CleverTap campaign and report on it
+    api: openapi/clevertap-campaigns-api-openapi.yml
+    operations:
+      - createCampaign
+      - getCampaignResult
+      - stopCampaign
+    emphasis: >-
+      Estimate-then-send. createCampaign is irreversible and non-idempotent; a
+      blind retry can send twice.
+  - file: clevertap-query-profiles-events-and-counts.md
+    name: Query CleverTap profiles, events and counts
+    api: openapi/clevertap-profiles-api-openapi.yml
+    operations:
+      - getProfile
+      - queryProfiles
+      - queryEvents
+      - getEventCounts
+      - getProfileCounts
+      - disassociateProfile
+    emphasis: >-
+      The two-step cursor flow — POST to get a cursor, GET with ?cursor= to page.
+cross_links:
+  conventions: conventions/clevertap-conventions.yml
+  errors: errors/clevertap-error-codes.yml
+  rate_limits: rate-limits/clevertap-rate-limits.yml
+  authentication: authentication/clevertap-authentication.yml
+  agentic_access: agentic-access/clevertap-agentic-access.yml

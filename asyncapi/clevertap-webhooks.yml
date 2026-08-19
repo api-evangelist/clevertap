@@ -1,0 +1,121 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.clevertap.com/docs/webhooks
+spec_type: none
+description: >-
+  CleverTap's outbound event surface. CleverTap publishes NO AsyncAPI document —
+  no /asyncapi.yaml on any host, nothing in the GitHub org, nothing in the docs
+  index — but it does document a real webhook product, so the event surface is
+  captured here as a webhook catalog rather than fabricated as a spec.
+asyncapi_published: false
+webhooks:
+  published: true
+  docs: https://developer.clevertap.com/docs/webhooks
+  configuration: dashboard
+  configuration_path: 'Settings > Engage > Channels > Webhooks'
+  note: >-
+    Webhooks are configured in the CleverTap dashboard, not via the REST API.
+    There is no webhook-subscription endpoint, so an agent cannot register or
+    list webhook endpoints programmatically — a real gap between the webhook
+    product and the API surface.
+  transport:
+    protocol: https
+    methods:
+      - POST
+      - GET
+      - PUT
+      - DELETE
+    content_types:
+      - application/json
+      - text/plain
+    authentication: optional HTTP Basic on the receiving endpoint
+  delivery:
+    timeout_seconds: 3
+    retries: 1
+    on_failure: Campaign stats page records "Webhook Dispatch Failed"
+    signature_verification: none-documented
+    note: >-
+      No HMAC signature, no signing secret and no replay-protection header is
+      documented for inbound verification. A receiver cannot cryptographically
+      verify that a payload came from CleverTap.
+  trigger_types:
+    - id: single-action
+      description: User performed an action.
+      example: User launched the app.
+    - id: actions
+      description: User performed multiple actions.
+      example: User launched the app and viewed a notification.
+    - id: inaction-within-time
+      description: >-
+        User performed an action but did not perform another action within a
+        given time.
+      example: User has not launched the app in three days.
+    - id: inaction
+      description: User performed an action but did not perform another action.
+      example: User launched the app but did not view a notification.
+    - id: date-time-property
+      description: A period of time after a date-time property on a user event.
+      example: User purchased an item and three days have passed.
+    - id: actions-with-user-properties
+      description: Performed an action or not, filtered by demographic properties.
+      example: User purchased an item and lives in Canada.
+  payload_shapes:
+    - name: broadcast
+      description: >-
+        Emitted when the content format is JSON, the body is profile variables
+        plus custom key-value pairs, the webhook URL carries no personalization,
+        and key-value pairs contain no Liquid tags.
+      root_fields:
+        - name: targetId
+          type: integer
+          description: The webhook campaign ID the payload belongs to.
+        - name: key_values
+          type: object
+          description: Custom key-value pairs configured on the campaign.
+        - name: profiles
+          type: array
+          description: Array of profile objects.
+      profile_fields:
+        - Email
+        - Identity
+        - ObjectId
+        - ProfileData
+        - Event_properties
+        - Push_token
+    - name: non-broadcast
+      description: Every other webhook message. Identical shape except `profiles` is a single object rather than an array.
+      root_fields:
+        - name: targetId
+          type: integer
+        - name: key_values
+          type: object
+        - name: profiles
+          type: object
+inbound_triggers:
+  - name: External Trigger API
+    docs: https://developer.clevertap.com/docs/external-trigger-api
+    description: >-
+      Inbound counterpart — lets an external system trigger a CleverTap campaign
+      send over REST.
+  - name: Bulletins API
+    docs: https://developer.clevertap.com/docs/bulletins-api
+    description: >-
+      Raise a Bulletin in CleverTap when a business event fires, used to drive
+      real-time campaign delivery from external systems.
+templating:
+  liquid_tags: https://docs.clevertap.com/docs/liquid-tags
+  linked_content: https://docs.clevertap.com/docs/linked-content
+x-evidence:
+  fetched: '2026-08-13'
+  urls:
+    - url: https://developer.clevertap.com/docs/webhooks
+      status: 200
+    - url: https://api.clevertap.com/asyncapi.yaml
+      status: 200
+      note: >-
+        Soft-200 with a zero-byte body — the API hosts return 200 for every path.
+        Not an AsyncAPI document.
+  searched_for_asyncapi:
+    - github.com/CleverTap (92 repos enumerated — no AsyncAPI file)
+    - developer.clevertap.com/llms.txt (307-line docs index — no AsyncAPI entry)
+    - /asyncapi.yaml and /asyncapi.json on every API and docs host

@@ -1,23 +1,118 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/clevertap-openapi.yml
+generated: '2026-08-13'
+method: searched
+source: openapi/clevertap-campaigns-api-openapi.yml, openapi/clevertap-events-api-openapi.yml,
+  openapi/clevertap-profiles-api-openapi.yml, openapi/clevertap-reports-api-openapi.yml
+docs: https://developer.clevertap.com/docs/authentication
+description: >-
+  CleverTap's authentication model, derived from the OpenAPI security schemes and
+  upgraded from the provider's own authentication and SCIM pages plus the MCP
+  server's OAuth metadata. Three distinct models coexist on three different
+  surfaces, and they do not share credentials.
 summary:
   types:
-  - apiKey
+    - apiKey
+    - http
+    - oauth2
   api_key_in:
-  - header
+    - header
+  oauth2_flows:
+    - authorizationCode
+    - refreshToken
+  surfaces: 3
 schemes:
-- name: AccountId
-  type: apiKey
-  in: header
-  parameter: X-CleverTap-Account-Id
-  description: CleverTap account identifier
-  sources:
-  - openapi/clevertap-openapi.yml
-- name: Passcode
-  type: apiKey
-  in: header
-  parameter: X-CleverTap-Passcode
-  description: CleverTap account or user passcode
-  sources:
-  - openapi/clevertap-openapi.yml
+  - name: AccountId
+    type: apiKey
+    in: header
+    parameter: X-CleverTap-Account-Id
+    description: CleverTap Account ID (Project ID), found under Settings > Project > Overview.
+    surface: rest
+    sources:
+      - openapi/clevertap-campaigns-api-openapi.yml
+      - openapi/clevertap-events-api-openapi.yml
+      - openapi/clevertap-profiles-api-openapi.yml
+      - openapi/clevertap-reports-api-openapi.yml
+      - https://developer.clevertap.com/docs/authentication
+  - name: Passcode
+    type: apiKey
+    in: header
+    parameter: X-CleverTap-Passcode
+    description: CleverTap Account Passcode, paired with the Account ID on every REST request.
+    surface: rest
+    sources:
+      - openapi/clevertap-campaigns-api-openapi.yml
+      - openapi/clevertap-events-api-openapi.yml
+      - openapi/clevertap-profiles-api-openapi.yml
+      - openapi/clevertap-reports-api-openapi.yml
+      - https://developer.clevertap.com/docs/authentication
+  - name: SCIM Token
+    type: http
+    scheme: bearer
+    description: >-
+      Separate bearer token for the SCIM user-provisioning endpoints
+      (/nx/v2/scim/v2/Users). Generated in the dashboard under Organization >
+      SCIM Management. Exactly one token exists per account; it is valid for one
+      year, and regenerating it immediately invalidates the previous token. SCIM
+      and IdP tokens are not interchangeable.
+    surface: scim
+    sources:
+      - https://developer.clevertap.com/docs/scim-user-provisioning-using-api
+  - name: MCP OAuth 2.1
+    type: oauth2
+    description: >-
+      The remote MCP server at mcp.clevertap.com is OAuth-protected with dynamic
+      client registration and PKCE. This is the only CleverTap surface using
+      OAuth.
+    surface: mcp
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://mcp.clevertap.com/oauth/authorize
+        tokenUrl: https://mcp.clevertap.com/oauth/token
+        registrationUrl: https://mcp.clevertap.com/oauth/register
+        scopes: 4
+        pkce: S256
+      - flow: refreshToken
+        tokenUrl: https://mcp.clevertap.com/oauth/token
+    sources:
+      - well-known/clevertap-oauth-authorization-server.json
+      - well-known/clevertap-oauth-protected-resource.json
+    detail: scopes/clevertap-scopes.yml
+posture:
+  rotation_documented: false
+  expiry:
+    rest: none
+    scim: 1 year
+    mcp: access token + refresh token
+  scoping:
+    rest: none
+    mcp: identity scopes only (openid, profile, email, offline_access)
+  mtls: false
+  ip_allowlisting: true
+  ip_allowlist_note: >-
+    CleverTap publishes its outbound IP ranges for customers allowlisting
+    CleverTap traffic, and offers "restricted IP access" as a dashboard security
+    control.
+  ip_ranges_doc: https://developer.clevertap.com/docs/clevertap-ip-ranges
+  payload_encryption:
+    supported: true
+    scheme: HPKE
+    doc: https://developer.clevertap.com/docs/api-encryption
+  regional_binding:
+    note: >-
+      Credentials are bound to the account's data-center region. Presenting valid
+      credentials to the wrong regional host returns HTTP 401 Unauthorized rather
+      than a redirect.
+    doc: https://developer.clevertap.com/docs/common-api-components
+  gap: >-
+    The REST API — the surface that carries all customer data — uses two static,
+    non-expiring, unscoped header credentials. There is no token exchange, no
+    least-privilege scope, no documented rotation procedure and no expiry. An
+    agent given these headers holds full account authority indefinitely.
+x-evidence:
+  fetched: '2026-08-13'
+  urls:
+    - url: https://developer.clevertap.com/docs/authentication
+      status: 200
+    - url: https://developer.clevertap.com/docs/common-api-components
+      status: 200
+    - url: https://developer.clevertap.com/docs/scim-user-provisioning-using-api
+      status: 200

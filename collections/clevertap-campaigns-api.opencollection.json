@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CleverTap REST Campaigns API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-CleverTap-Account-Id",
+      "value": "{{X-CleverTap-Account-Id}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Campaigns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.api.clevertap.com/1/targets/create.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a campaign across push, email, sms, webpush, whatsapp,\nwebhook, or notificationinbox channels.\n"
+        },
+        {
+          "info": {
+            "name": "Stop a campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{region}.api.clevertap.com/1/targets/stop.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Stop a campaign"
+        },
+        {
+          "info": {
+            "name": "Get campaign result/report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{region}.api.clevertap.com/1/targets/result.json",
+            "params": [
+              {
+                "name": "req_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get campaign result/report"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

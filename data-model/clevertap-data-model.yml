@@ -1,0 +1,216 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/_original/clevertap-openapi.yml
+docs:
+  - https://developer.clevertap.com/docs/concepts-user-profiles
+  - https://developer.clevertap.com/docs/events
+  - https://developer.clevertap.com/docs/concepts-campaigns
+  - https://developer.clevertap.com/docs/user-profile-object
+description: >-
+  Entity-relationship graph for the CleverTap REST API, derived from the request
+  and response schemas in this repo's OpenAPI and cross-checked against the
+  provider's object-reference pages. CleverTap's specs are schema-light (most
+  request bodies are declared `type: object` with no properties), so
+  relationships here come from the identifier fields the operations actually
+  carry rather than from $ref chains.
+identifiers:
+  - field: identity
+    description: >-
+      The customer's own user identifier (email, phone, customer ID). The primary
+      cross-system join key.
+    scope: profile
+  - field: objectId
+    description: >-
+      The CleverTap-generated device/user identifier (CleverTap ID). Present on
+      webhook payloads as `ObjectId`.
+    scope: profile
+    format: opaque string, commonly prefixed with '-' or '__'
+  - field: FBID
+    description: Facebook identifier used as an alternate profile key.
+    scope: profile
+  - field: GPID
+    description: Google Plus identifier used as an alternate profile key.
+    scope: profile
+  - field: req_id
+    description: >-
+      Handle returned by campaign creation; passed to GET /1/targets/result.json
+      to retrieve the campaign report. A job handle, not a durable resource id.
+    scope: campaign
+  - field: targetId
+    description: The campaign identifier, delivered on every webhook payload.
+    scope: campaign
+entities:
+  - name: Profile
+    description: >-
+      A unified user record holding identity keys, demographic properties and
+      arbitrary custom properties.
+    keys:
+      - identity
+      - objectId
+      - FBID
+      - GPID
+    fields:
+      - name: profileData
+        type: object
+        description: Caller-defined custom properties; supports nested objects.
+      - name: Email
+      - name: Identity
+      - name: ObjectId
+      - name: Push_token
+    operations:
+      - upload
+      - getProfile
+      - queryProfiles
+      - disassociateProfile
+  - name: Event
+    description: >-
+      A named behavioral action attributed to a profile, with arbitrary event
+      properties and a Unix-epoch timestamp.
+    keys:
+      - evtName
+    fields:
+      - name: evtName
+        type: string
+      - name: evtData
+        type: object
+      - name: ts
+        type: integer
+        description: Unix epoch seconds
+    operations:
+      - upload
+      - queryEvents
+      - getEventCounts
+  - name: DeviceToken
+    description: A push token bound to a profile's objectId, typed by platform.
+    fields:
+      - name: id
+      - name: type
+    operations: []
+    note: >-
+      Uploaded through the Upload Device Tokens API, which is documented but not
+      represented in this repo's OpenAPI.
+  - name: Campaign
+    description: >-
+      A message send across push, email, sms, webpush, whatsapp, webhook or
+      notificationinbox, targeted at a segment and scheduled by `when`.
+    keys:
+      - id
+      - targetId
+    fields:
+      - name: name
+        type: string
+      - name: target_mode
+        type: string
+        enum:
+          - push
+          - email
+          - sms
+          - webpush
+          - whatsapp
+          - webhook
+          - notificationinbox
+      - name: where
+        type: object
+      - name: content
+        type: object
+      - name: when
+        type: string
+      - name: segment
+        type: string
+      - name: labels
+        type: array
+      - name: respect_frequency_caps
+        type: boolean
+      - name: send_to_all_devices
+        type: boolean
+      - name: estimate_only
+        type: boolean
+      - name: draft
+        type: boolean
+    operations:
+      - createCampaign
+      - stopCampaign
+      - getCampaignResult
+  - name: Segment
+    description: >-
+      A named audience defined by a CleverTap Query Language expression over
+      profiles and events. Referenced by campaigns via `segment`.
+    operations: []
+    note: >-
+      Documented as Create Segment / Update Segment APIs; not present in this
+      repo's OpenAPI.
+  - name: CampaignReport
+    description: Delivery and engagement counts for a campaign, retrieved by req_id.
+    keys:
+      - req_id
+    operations:
+      - getCampaignResult
+  - name: Count
+    description: >-
+      Aggregate event or profile counts over a duration, used for real-time
+      analytics.
+    operations:
+      - getEventCounts
+      - getProfileCounts
+relationships:
+  - from: Event
+    to: Profile
+    type: belongs_to
+    via: identity | objectId | FBID | GPID
+    note: >-
+      Every event is attributed to exactly one profile through one of the four
+      identity keys. A record missing all of them fails with application code 523
+      (Missing identity).
+  - from: Profile
+    to: Event
+    type: has_many
+    via: identity
+  - from: Profile
+    to: DeviceToken
+    type: has_many
+    via: objectId
+    note: Application code 530 (Invalid 'objectId') is the failure mode on a bad binding.
+  - from: Campaign
+    to: Segment
+    type: belongs_to
+    via: segment
+  - from: Campaign
+    to: Profile
+    type: has_many
+    via: where / segment
+    note: >-
+      The audience is resolved at send time from the CQL expression in `where` or
+      from a named segment; there is no stored campaign-to-profile join to read.
+  - from: CampaignReport
+    to: Campaign
+    type: belongs_to
+    via: req_id
+  - from: Count
+    to: Event
+    type: belongs_to
+    via: event name
+  - from: Count
+    to: Profile
+    type: belongs_to
+    via: profile property
+  - from: WebhookPayload
+    to: Campaign
+    type: belongs_to
+    via: targetId
+    note: See asyncapi/clevertap-webhooks.yml for the payload shapes.
+  - from: WebhookPayload
+    to: Profile
+    type: has_many
+    via: profiles[]
+polymorphic_ingestion:
+  endpoint: /1/upload
+  discriminator: type
+  values:
+    - profile
+    - event
+  note: >-
+    A single endpoint ingests both entities; each record in the `d` array
+    declares its own `type`. A record whose type is neither fails with
+    application code 524 (Data neither event nor profile). Max 1000 records per
+    call.
+render: null

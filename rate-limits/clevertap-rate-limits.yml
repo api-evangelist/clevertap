@@ -3,124 +3,208 @@ specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
 provider: CleverTap
 providerId: clevertap
+generated: '2026-08-13'
+method: searched
+source: https://developer.clevertap.com/docs/api-request-limit
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-08-13'
 tags:
-  - Audiences
-  - Customer Engagement
-  - Customer Retention
-  - Marketing Automation
-  - Mobile Engagement
-  - Push Notifications
-  - User Behavior
   - Rate Limiting
   - Quotas
   - Throttling
-description: Machine-readable rate limit definitions for the CleverTap API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
+  - Concurrency
+description: >-
+  CleverTap's published API limits, read from its own API Request Limit page on
+  2026-08-13. This file REPLACES a 2026-05-04 bulk-sweep scaffold that invented
+  per-minute and per-month tiered quotas and X-RateLimit-* headers CleverTap does
+  not publish. The real model is different in kind: CleverTap throttles on
+  CONCURRENCY (parallel in-flight requests per account), not on a time window,
+  and says so explicitly — "CleverTap does not enforce rate limits based on
+  specific time frames (minute, hour, or day)". Limits are per user account and
+  per API, and do not vary by pricing tier.
+model:
+  type: concurrency
+  scope: per-account-per-api
+  time_windowed: false
+  varies_by_plan: false
+  quota: none-published
+  overage: none-published
+  provider_statement: >-
+    "CleverTap does not enforce rate limits based on specific time frames
+    (minute, hour, or day), making our APIs more accessible."
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  limit: null
+  remaining: null
+  reset: null
+  retryAfter: null
+  policy: null
+  note: >-
+    NO RATE-LIMIT RESPONSE HEADERS ARE DOCUMENTED. CleverTap publishes no
+    X-RateLimit-*, RateLimit-* or Retry-After contract for its REST API, so an
+    agent has no runtime signal of remaining headroom and must infer exhaustion
+    from the 429 status alone. This is a real gap, recorded as an honest null
+    rather than a guessed header set.
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
+  throttled_message: Too many concurrent requests
+  quotaExceeded: null
   serviceUnavailable: 503
+limit_count: 23
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - CleverTap Profile API
-      - CleverTap Event API
-      - CleverTap Campaign API
-      - CleverTap Bulletins API
-      - CleverTap Catalog API
-      - CleverTap Custom List API
-      - CleverTap Remote Config API
-      - CleverTap Real-Time Counts API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
+  - name: Upload User Profiles
+    scope: account
+    metric: concurrent_requests
+    limit: 15
+    endpoint: /1/upload
+    docs: https://developer.clevertap.com/docs/upload-user-profiles-api
+  - name: Upload Events
+    scope: account
+    metric: concurrent_requests
+    limit: 15
+    endpoint: /1/upload
+    docs: https://developer.clevertap.com/docs/upload-events-api
+  - name: Upload Device Tokens
+    scope: account
+    metric: concurrent_requests
+    limit: 15
+    docs: https://developer.clevertap.com/docs/upload-device-tokens-api
+  - name: Catalog API
+    scope: account
+    metric: concurrent_requests
+    limit: 3
+    docs: https://developer.clevertap.com/docs/catalog-api-endpoints
+  - name: Create Campaign
+    scope: account
+    metric: concurrent_requests
+    limit: 3
+    endpoint: /1/targets/create.json
+    docs: https://developer.clevertap.com/docs/create-campaign-api
+  - name: Create Segment
+    scope: account
+    metric: concurrent_requests
+    limit: 3
+    docs: https://developer.clevertap.com/docs/create-segment-api
+  - name: Update Segment
+    scope: account
+    metric: concurrent_requests
+    limit: 3
+    docs: https://developer.clevertap.com/docs/update-segment-api
+  - name: Custom List API
+    scope: account
+    metric: concurrent_requests
+    limit: 3
+    docs: https://developer.clevertap.com/docs/custom-list-endpoints
+  - name: Delete User Profile
+    scope: account
+    metric: concurrent_requests
+    limit: 3
+    docs: https://developer.clevertap.com/docs/delete-user-profile-api
+  - name: Demerge User Profile
+    scope: account
+    metric: concurrent_requests
+    limit: 3
+    docs: https://developer.clevertap.com/docs/demerge-user-profile-api
+  - name: External Trigger API
+    scope: account
+    metric: concurrent_requests
+    limit: 3
+    docs: https://developer.clevertap.com/docs/external-trigger-api
+  - name: Get Campaign Report
+    scope: account
+    metric: concurrent_requests
+    limit: 3
+    endpoint: /1/targets/result.json
+    docs: https://developer.clevertap.com/docs/get-campaign-report-api
+  - name: Get Campaigns
+    scope: account
+    metric: concurrent_requests
+    limit: 3
+    docs: https://developer.clevertap.com/docs/get-campaigns-api
+  - name: Get Event Count
+    scope: account
+    metric: concurrent_requests
+    limit: 3
+    endpoint: /1/counts/event.json
+    docs: https://developer.clevertap.com/docs/get-event-count-api
+  - name: Get Events
+    scope: account
+    metric: concurrent_requests
+    limit: 3
+    endpoint: /1/events.json
+    docs: https://developer.clevertap.com/docs/get-events-api
+  - name: Get Message Reports
+    scope: account
+    metric: concurrent_requests
+    limit: 3
+    docs: https://developer.clevertap.com/docs/get-message-reports-api
+  - name: Get Profile Count
+    scope: account
+    metric: concurrent_requests
+    limit: 3
+    endpoint: /1/counts/profile.json
+    docs: https://developer.clevertap.com/docs/get-profile-count-api
+  - name: Get User Profiles
+    scope: account
+    metric: concurrent_requests
+    limit: 3
+    endpoint: /1/profiles.json
+    docs: https://developer.clevertap.com/docs/get-user-profiles-api
+  - name: Raise a Bulletin
+    scope: account
+    metric: concurrent_requests
+    limit: 3
+    docs: https://developer.clevertap.com/docs/bulletins-api
+  - name: Real-Time Counts
+    scope: account
+    metric: concurrent_requests
+    limit: 3
+    docs: https://developer.clevertap.com/docs/real-time-counts-api
+  - name: Stop Scheduled Campaign
+    scope: account
+    metric: concurrent_requests
+    limit: 3
+    endpoint: /1/targets/stop.json
+    docs: https://developer.clevertap.com/docs/stop-campaign-api
+  - name: Top Property Counts
+    scope: account
+    metric: concurrent_requests
+    limit: 3
+    docs: https://developer.clevertap.com/docs/top-property-counts-api
+  - name: Trends
+    scope: account
+    metric: concurrent_requests
+    limit: 3
+    docs: https://developer.clevertap.com/docs/trends-api
+other_limits:
+  - name: Upload batch size
     limit: 1000
-    timeFrame: month
-    applies:
-      - CleverTap Profile API
-      - CleverTap Event API
-      - CleverTap Campaign API
-      - CleverTap Bulletins API
-      - CleverTap Catalog API
-      - CleverTap Custom List API
-      - CleverTap Remote Config API
-      - CleverTap Real-Time Counts API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - CleverTap Profile API
-      - CleverTap Event API
-      - CleverTap Campaign API
-      - CleverTap Bulletins API
-      - CleverTap Catalog API
-      - CleverTap Custom List API
-      - CleverTap Remote Config API
-      - CleverTap Real-Time Counts API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - CleverTap Profile API
-      - CleverTap Event API
-      - CleverTap Campaign API
-      - CleverTap Bulletins API
-      - CleverTap Catalog API
-      - CleverTap Custom List API
-      - CleverTap Remote Config API
-      - CleverTap Real-Time Counts API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - CleverTap Profile API
-      - CleverTap Event API
-      - CleverTap Campaign API
-      - CleverTap Bulletins API
-      - CleverTap Catalog API
-      - CleverTap Custom List API
-      - CleverTap Remote Config API
-      - CleverTap Real-Time Counts API
+    unit: records per request
+    applies: /1/upload
+    source: https://developer.clevertap.com/docs/upload-events-api
+  - name: Webhook response timeout
+    limit: 3
+    unit: seconds
+    applies: outbound webhooks
+    note: >-
+      CleverTap waits three seconds for the receiving endpoint to respond, then
+      retries once; a second failure marks the campaign "Webhook Dispatch Failed".
+    source: https://developer.clevertap.com/docs/webhooks
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Exhaustion behavior
+    description: >-
+      Requests beyond the concurrency ceiling are rejected with HTTP 429 and the
+      message "Too many concurrent requests". Because there is no window, the
+      correct client behavior is to cap in-flight parallelism at the documented
+      number rather than to pace by time.
+  - name: No documented backoff contract
+    description: >-
+      CleverTap publishes no Retry-After value and no reset timestamp. Clients
+      must implement their own backoff.
+x-evidence:
+  fetched: '2026-08-13'
+  url: https://developer.clevertap.com/docs/api-request-limit
+  http_status: 200
+  page_updated: '2026-03-17'
 maintainers:
   - FN: Kin Lane
     email: kinlane@gmail.com

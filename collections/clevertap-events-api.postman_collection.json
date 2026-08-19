@@ -1,0 +1,332 @@
+{
+  "item": [
+    {
+      "id": "862a2080-8eb1-415c-9ec0-d33cfa4dcf96",
+      "name": "Events",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "40ece6aa-08af-41fb-a720-158fdc698b5a",
+          "name": "Upload user profiles or events",
+          "request": {
+            "name": "Upload user profiles or events",
+            "description": {
+              "content": "Upload an array of records, each typed as \"profile\" or \"event\".\nMaximum 1000 records per call.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "1",
+                "upload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"d\": [\n    {\n      \"type\": \"<string>\",\n      \"identity\": \"<string>\",\n      \"FBID\": \"<string>\",\n      \"GPID\": \"<string>\",\n      \"objectId\": \"<string>\",\n      \"profileData\": \"<object>\",\n      \"evtName\": \"<string>\",\n      \"evtData\": \"<object>\",\n      \"ts\": \"<integer>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"identity\": \"<string>\",\n      \"FBID\": \"<string>\",\n      \"GPID\": \"<string>\",\n      \"objectId\": \"<string>\",\n      \"profileData\": \"<object>\",\n      \"evtName\": \"<string>\",\n      \"evtData\": \"<object>\",\n      \"ts\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "25c5b432-4d1f-41e8-bda4-c1ebc82ac052",
+              "name": "Upload accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-CleverTap-Account-Id",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"d\": [\n    {\n      \"type\": \"<string>\",\n      \"identity\": \"<string>\",\n      \"FBID\": \"<string>\",\n      \"GPID\": \"<string>\",\n      \"objectId\": \"<string>\",\n      \"profileData\": \"<object>\",\n      \"evtName\": \"<string>\",\n      \"evtData\": \"<object>\",\n      \"ts\": \"<integer>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"identity\": \"<string>\",\n      \"FBID\": \"<string>\",\n      \"GPID\": \"<string>\",\n      \"objectId\": \"<string>\",\n      \"profileData\": \"<object>\",\n      \"evtName\": \"<string>\",\n      \"evtData\": \"<object>\",\n      \"ts\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"processed\": 8639\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a479ce6b-ec4f-4495-a526-7d4f83e64248",
+              "name": "Concurrency / rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-CleverTap-Account-Id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"d\": [\n    {\n      \"type\": \"<string>\",\n      \"identity\": \"<string>\",\n      \"FBID\": \"<string>\",\n      \"GPID\": \"<string>\",\n      \"objectId\": \"<string>\",\n      \"profileData\": \"<object>\",\n      \"evtName\": \"<string>\",\n      \"evtData\": \"<object>\",\n      \"ts\": \"<integer>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"identity\": \"<string>\",\n      \"FBID\": \"<string>\",\n      \"GPID\": \"<string>\",\n      \"objectId\": \"<string>\",\n      \"profileData\": \"<object>\",\n      \"evtName\": \"<string>\",\n      \"evtData\": \"<object>\",\n      \"ts\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "510bc600-a08d-4390-bf92-a6dbd72dd014",
+          "name": "Query events",
+          "request": {
+            "name": "Query events",
+            "description": {},
+            "url": {
+              "path": [
+                "1",
+                "events.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7c00120f-358d-44ac-b6d6-912d66e4e674",
+              "name": "Events query result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "1",
+                    "events.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-CleverTap-Account-Id",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "<object>",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "CleverTap data-center region (This can only be one of in1,us1,eu1,sg1,sk1,mec1,aps3)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "in1",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://{{region}}.api.clevertap.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-CleverTap-Account-Id"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "516870b8-a395-4480-9b92-b8c459ce16e0",
+    "name": "CleverTap REST Campaigns Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "CleverTap customer engagement and retention REST API.\nThe base URL is region-specific: replace {region} with your account's\nregion code (e.g. in1, us1, eu1, sg1, sk1, mec1). All requests must\ninclude X-CleverTap-Account-Id and X-CleverTap-Passcode headers.\nRate limits: concurrent requests capped at 15 per account; campaign\ncreation limited to 3 RPS.\n\n\nContact Support:\n Name: CleverTap Developers",
+      "type": "text/plain"
+    }
+  }
+}

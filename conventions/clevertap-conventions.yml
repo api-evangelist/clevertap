@@ -1,0 +1,178 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.clevertap.com/docs/common-api-components
+docs:
+  - https://developer.clevertap.com/docs/api-overview
+  - https://developer.clevertap.com/docs/common-api-components
+  - https://developer.clevertap.com/docs/authentication
+  - https://developer.clevertap.com/docs/api-errors
+  - https://developer.clevertap.com/docs/api-request-limit
+  - https://developer.clevertap.com/docs/api-encryption
+  - https://developer.clevertap.com/docs/idc
+description: >-
+  Cross-cutting request/response semantics for the CleverTap REST API, read from
+  the provider's own API concept pages and cross-checked against the OpenAPI in
+  this repo.
+
+authentication:
+  style: static account credentials in headers
+  headers:
+    - name: X-CleverTap-Account-Id
+      description: The CleverTap Account ID (Project ID).
+      required: true
+    - name: X-CleverTap-Passcode
+      description: The CleverTap Account Passcode.
+      required: true
+    - name: Content-Type
+      description: Always application/json.
+      required: true
+  oauth: false
+  note: >-
+    Two static header credentials, not a bearer token and not OAuth. There is no
+    key rotation, expiry or scope model on the REST API. The SCIM provisioning
+    endpoints are the exception — they use a separate bearer token with a
+    one-year lifetime. The MCP server (mcp.clevertap.com) is the only CleverTap
+    surface using OAuth.
+  detail: authentication/clevertap-authentication.yml
+
+base_url:
+  style: region-specific host
+  default: https://api.clevertap.com
+  hosts:
+    - region: Europe (default)
+      host: api.clevertap.com
+    - region: India
+      host: in1.api.clevertap.com
+    - region: Singapore
+      host: sg1.api.clevertap.com
+    - region: United States
+      host: us1.api.clevertap.com
+    - region: Indonesia
+      host: aps3.api.clevertap.com
+    - region: Middle East (UAE)
+      host: mec1.api.clevertap.com
+  note: >-
+    The host is determined by the account's data-center region, not by a path or
+    a header. Calling the wrong regional host is an authentication failure, not a
+    routing redirect. Note that Europe uses the bare api.clevertap.com — there is
+    no eu1.api.clevertap.com in the published region table.
+  source: https://developer.clevertap.com/docs/common-api-components
+
+versioning:
+  scheme: uri-path
+  current: '1'
+  example: /1/upload
+  secondary: /nx/v2/ (SCIM provisioning — /nx/v2/scim/v2/Users)
+  policy_published: false
+  note: >-
+    Version 1 is embedded in every REST path. CleverTap publishes no API
+    versioning policy, no version-deprecation schedule and no version negotiation
+    header. A second, newer path prefix (/nx/v2/) exists for SCIM without any
+    stated relationship to /1/.
+
+idempotency:
+  supported: false
+  header: null
+  note: >-
+    NOT SUPPORTED. CleverTap documents no idempotency key, no request
+    deduplication header and no replay-safety contract anywhere in its API
+    documentation; the word does not appear on any API concept page. Writes to
+    /1/upload, /1/targets/create.json and the wallet/coupon endpoints are not
+    replay-safe. Deduplication for profile and event ingestion is instead
+    identity-based (identity / objectId / FBID / GPID), which collapses duplicate
+    PROFILES but does not make a repeated event upload or a repeated campaign
+    creation safe. No `Idempotency` pointer is emitted for this provider.
+
+pagination:
+  style: cursor
+  request_param: cursor
+  response_fields:
+    - cursor
+    - next_cursor
+  flow: >-
+    Two-step. POST the query (for example POST /1/events.json with the query
+    body) to obtain a `cursor`, then GET the same path with ?cursor=<cursor> to
+    fetch a page. Each page response carries `next_cursor`; iterate until it is
+    absent.
+  page_size_param: batch_size
+  applies_to:
+    - /1/events.json
+    - /1/profiles.json
+  source: https://developer.clevertap.com/docs/authentication
+
+request_tracing:
+  request_id_header: null
+  correlation_field: req_id
+  note: >-
+    No request-id or correlation response header is documented. Campaign
+    operations return a `req_id` in the response body which is then passed to
+    GET /1/targets/result.json to retrieve the campaign report — that is a job
+    handle, not a tracing identifier.
+
+error_envelope:
+  format: json
+  fields:
+    - status
+    - error
+    - code
+  problem_json: false
+  rfc9457: false
+  note: >-
+    Errors are plain JSON with a status/message shape, not RFC 9457
+    application/problem+json. HTTP status codes are used conventionally
+    (400/401/403/404/405/409/429/500/503) and are supplemented by CleverTap's own
+    numeric application codes in the 5xx range (509-555) returned inside the
+    response body for per-record ingestion failures. See
+    errors/clevertap-error-codes.yml.
+  detail: errors/clevertap-error-codes.yml
+
+partial_success:
+  supported: true
+  note: >-
+    /1/upload is a batch endpoint (max 1000 records). It returns HTTP 200 with
+    `processed` and an `unprocessed` array; per-record failures carry CleverTap
+    numeric codes. A 200 does NOT mean every record landed — an agent must read
+    the `unprocessed` array.
+
+rate_limits:
+  style: concurrency
+  signal_headers: none
+  status_on_exhaustion: 429
+  detail: rate-limits/clevertap-rate-limits.yml
+
+encryption:
+  supported: true
+  scheme: HPKE (Hybrid Public Key Encryption)
+  applies: request and response payloads, opt-in
+  note: >-
+    CleverTap offers optional end-to-end payload encryption using HPKE on top of
+    TLS, with customer-held key pairs. Encrypted requests are sent as binary
+    bodies and responses are decrypted with the customer's private key. This is
+    unusual for this product category and is a genuine differentiator.
+  source: https://developer.clevertap.com/docs/api-encryption
+
+query_language:
+  name: CleverTap Query Language (CQL)
+  note: >-
+    Segmentation and event queries are expressed in CQL rather than as REST query
+    parameters, which is why the query endpoints are POST-with-body rather than
+    GET-with-params.
+  source: https://developer.clevertap.com/docs/clevertap-query-language
+
+expansion_and_sparse_fields:
+  supported: false
+  note: No field-expansion or sparse-fieldset mechanism is documented.
+
+metadata:
+  supported: true
+  note: >-
+    Arbitrary custom properties are first-class — `profileData` on profiles and
+    `evtData` on events accept caller-defined keys, including nested objects.
+  source: https://developer.clevertap.com/docs/ingesting-nested-objects-via-clevertap-apis
+
+cross_links:
+  authentication: authentication/clevertap-authentication.yml
+  errors: errors/clevertap-error-codes.yml
+  rate_limits: rate-limits/clevertap-rate-limits.yml
+  lifecycle: lifecycle/clevertap-lifecycle.yml
+  webhooks: asyncapi/clevertap-webhooks.yml
