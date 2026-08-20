@@ -52,6 +52,9 @@ apis:
 - aid: clevertap:event-api
   name: CleverTap Event API
   tags:
+  - Event
+  - Tracking
+  tags_raw:
   - Events
   - Tracking
   humanURL: https://developer.clevertap.com/docs/event-api
@@ -103,6 +106,9 @@ apis:
   name: CleverTap Custom List API
   tags:
   - Audiences
+  - List
+  tags_raw:
+  - Audiences
   - Lists
   humanURL: https://developer.clevertap.com/docs/custom-list-api
   baseURL: https://api.clevertap.com
@@ -149,6 +155,8 @@ apis:
   humanURL: https://developer.clevertap.com/docs/profile-api
   baseURL: https://api.clevertap.com
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
