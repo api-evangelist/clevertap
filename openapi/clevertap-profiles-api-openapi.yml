@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: CleverTap REST Campaigns Profiles API
+  title: CleverTap REST Profiles API
   description: 'CleverTap customer engagement and retention REST API.
 
     The base URL is region-specific: replace {region} with your account''s
@@ -11,9 +11,7 @@ info:
 
     Rate limits: concurrent requests capped at 15 per account; campaign
 
-    creation limited to 3 RPS.
-
-    '
+    creation limited to 3 RPS.'
   version: 1.0.0
   contact:
     name: CleverTap Developers
@@ -44,9 +42,7 @@ paths:
       summary: Upload user profiles or events
       description: 'Upload an array of records, each typed as "profile" or "event".
 
-        Maximum 1000 records per call.
-
-        '
+        Maximum 1000 records per call.'
       operationId: upload
       tags:
       - Profiles

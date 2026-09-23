@@ -1,10 +1,7 @@
 {
   "provider": "clevertap",
   "sources": [
-    "clevertap-campaigns-api-openapi.yml",
-    "clevertap-events-api-openapi.yml",
-    "clevertap-profiles-api-openapi.yml",
-    "clevertap-reports-api-openapi.yml"
+    "_original/clevertap-openapi.yml"
   ],
   "outputs": [
     "clevertap-campaigns-api-openapi.yml",
@@ -15,6 +12,19 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "clevertap-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "clevertap-openapi.yml: declared missing tag: Campaigns",
+    "clevertap-openapi.yml: declared missing tag: Events",
+    "clevertap-openapi.yml: declared missing tag: Profiles",
+    "clevertap-openapi.yml: declared missing tag: Reports",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "clevertap-campaigns-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "clevertap-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "clevertap-profiles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "clevertap-reports-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
