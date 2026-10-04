@@ -1,0 +1,36 @@
+slug: clevertap
+provider: CleverTap
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Profiles
+  spec_file: clevertap-profiles-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.8
+  evidence: GET /1/profile.json 'Get a user profile'; POST /1/profiles.json 'Search/query user profiles';
+    POST /1/disassociate 'Disassociate (delete) user profiles'
+  reason: CRUD and query over unified customer/user profile records is customer master data management;
+    the identity-resolution/disassociate semantics reinforce Customer Data Management.
+- tag: Campaigns
+  spec_file: clevertap-campaigns-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: POST /1/targets/create.json createCampaign 'Create a campaign'; 'deliver personalized experiences
+    across mobile push, email, SMS, in-app, web push, and WhatsApp channels'
+  reason: Operations create, stop and report on multichannel engagement campaigns — marketing automation
+    across digital channels, i.e. Digital Marketing Management. Some ambiguity with Demand Generation,
+    hence moderate confidence.

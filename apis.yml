@@ -197,6 +197,9 @@ apis:
   - type: OpenAPI
     url: openapi/clevertap-reports-api-openapi.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/clevertap-capability-edges.yml
+    name: CleverTap Business Capability Map
   - type: AgenticAccess
     url: agentic-access/clevertap-agentic-access.yml
   - type: TrustCenter
