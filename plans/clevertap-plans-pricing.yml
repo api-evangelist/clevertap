@@ -164,3 +164,29 @@ x-evidence:
 maintainers:
   - FN: Kin Lane
     email: kinlane@gmail.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - negotiated
+  - subscription
+  units: []
+  plans:
+  - name: Essentials
+    access: paid
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Advanced
+    access: enterprise
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Cutting Edge
+    access: enterprise
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
