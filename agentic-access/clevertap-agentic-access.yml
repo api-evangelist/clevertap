@@ -1,110 +1,21 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/clevertap-openapi.yml
+source: openapi/clevertap-campaigns-api-openapi.yml, openapi/clevertap-events-api-openapi.yml,
+  openapi/clevertap-profiles-api-openapi.yml, openapi/clevertap-reports-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
-  operations: 10
+  operations: 11
   by_action_class:
-    acting: 8
-    connected: 2
+    acting: 5
+    connected: 6
   by_consequence:
-    write: 7
-    read: 2
+    write: 4
     safety-critical: 1
+    read: 6
   human_in_the_loop_required: 1
 operations:
-- path: /1/upload
-  method: post
-  operationId: upload
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /1/profile.json
-  method: get
-  operationId: getProfile
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /1/profiles.json
-  method: post
-  operationId: queryProfiles
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /1/events.json
-  method: post
-  operationId: queryEvents
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /1/counts/event.json
-  method: post
-  operationId: getEventCounts
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /1/counts/profile.json
-  method: post
-  operationId: getProfileCounts
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /1/targets/create.json
   method: post
   operationId: createCampaign
@@ -147,6 +58,68 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /1/upload
+  method: post
+  operationId: upload
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /1/events.json
+  method: post
+  operationId: queryEvents
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /1/upload
+  method: post
+  operationId: upload
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /1/profile.json
+  method: get
+  operationId: getProfile
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /1/profiles.json
+  method: post
+  operationId: queryProfiles
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /1/disassociate
   method: post
   operationId: disassociateProfile
@@ -163,3 +136,23 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /1/counts/event.json
+  method: post
+  operationId: getEventCounts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /1/counts/profile.json
+  method: post
+  operationId: getProfileCounts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
