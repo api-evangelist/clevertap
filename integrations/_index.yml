@@ -245,3 +245,328 @@
     builder: Pipedream repo (component)
   status: not-a-workflow
   arazzo: null
+- slug: clevertap-zoom
+  label: Zoom
+  partner: zoom
+  partner_name: Zoom
+  category: Video Conferencing
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/zoom
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: clevertap-mailchimp
+  label: Mailchimp
+  partner: mailchimp
+  partner_name: Mailchimp
+  category: Marketing Automation
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/mailchimp
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: clevertap-salesforce
+  label: Salesforce
+  partner: salesforce
+  partner_name: Salesforce
+  category: CRM (Customer Relationship Management)
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/salesforce
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: clevertap-google-forms
+  label: Google Forms
+  partner: google-forms
+  partner_name: Google Forms
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/google-forms
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: clevertap-zoho-crm
+  label: Zoho CRM
+  partner: zoho-crm
+  partner_name: Zoho CRM
+  category: CRM (Customer Relationship Management)
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/zoho-crm
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: clevertap-flickr
+  label: Flickr
+  partner: flickr
+  partner_name: Flickr
+  category: Images & Design
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/flickr
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: clevertap-google-analytics-4
+  label: Google Analytics 4
+  partner: google-analytics
+  partner_name: Google Analytics 4
+  category: Analytics
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/google-analytics-4
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: clevertap-instabot-chatbot-platform
+  label: 'Instabot: Chatbot Platform'
+  partner_name: 'Instabot: Chatbot Platform'
+  category: Marketing Automation
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/instabot
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: clevertap-intercom
+  label: Intercom
+  partner: intercom
+  partner_name: Intercom
+  category: Customer Support
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/intercom
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: clevertap-yay-forms
+  label: Yay! Forms
+  partner_name: Yay! Forms
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/yay-forms
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: clevertap-msg91
+  label: MSG91
+  partner_name: MSG91
+  category: Communication
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/msg91
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: clevertap-labsmobile
+  label: LabsMobile
+  partner_name: LabsMobile
+  category: Phone & SMS
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/labsmobile
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: clevertap-pro-forms
+  label: pro-Forms
+  partner_name: pro-Forms
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/pro-forms
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: clevertap-easelly-design-service
+  label: Easelly Design Service
+  partner_name: Easelly Design Service
+  category: Images & Design
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/easelly-design-service
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: clevertap-chatgpt-openai
+  label: ChatGPT (OpenAI)
+  partner: openai
+  partner_name: ChatGPT (OpenAI)
+  category: AI Assistants
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/chatgpt
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: clevertap-anthropic-claude
+  label: Anthropic (Claude)
+  partner: anthropic
+  partner_name: Anthropic (Claude)
+  category: AI Models
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/anthropic-claude
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: clevertap-manychat
+  label: Manychat
+  partner: manychat
+  partner_name: Manychat
+  category: Social Media Marketing
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/manychat
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: clevertap-linkedin-conversions
+  label: LinkedIn Conversions
+  partner_name: LinkedIn Conversions
+  category: Ads & Conversion
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/linkedin-conversions
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: clevertap-facebook-conversions-for-business-admins
+  label: Facebook Conversions (for Business admins)
+  partner: facebook
+  partner_name: Facebook Conversions (for Business admins)
+  category: Ads & Conversion
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/facebook-conversions-business
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: clevertap-qrtiger-qr-code
+  label: QRTIGER QR Code
+  partner_name: QRTIGER QR Code
+  category: Marketing
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/qr-code-generator-1
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: clevertap-mcp-client-by-zapier
+  label: MCP Client by Zapier
+  partner: zapier
+  partner_name: MCP Client by Zapier
+  category: Model Context Protocol (MCP)
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/mcp-client-by-zapier
+  source: edge
+  relationship: ipaas-bridge
+  status: not-a-workflow
+  arazzo: null
+- slug: clevertap-drag-n-survey
+  label: Drag'n Survey
+  partner_name: Drag'n Survey
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/dragn-survey
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: clevertap-spotme
+  label: SpotMe
+  partner_name: SpotMe
+  category: Event Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/spotme
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: clevertap-engage-forms
+  label: Engage Forms
+  partner_name: Engage Forms
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/engage-forms
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: clevertap-clipcat
+  label: Clipcat
+  partner_name: Clipcat
+  category: Video & Audio
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/clipcat
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: clevertap-smsmasivo-com-co
+  label: SMSMasivo.com.co
+  partner_name: SMSMasivo.com.co
+  category: Marketing Automation
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/clevertap/integrations/smsmasivocomco
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
