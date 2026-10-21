@@ -23,6 +23,7 @@ checked:
 - https://monid.ai/tools/clevertap
 - https://n8n.io/integrations/clevertap/
 - https://zapier.com/apps/clevertap/integrations
+- google-play/integrations/google-play-integration-edges.yml
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -643,6 +644,25 @@ edges:
   direction: third-party
   category: Marketing Automation
   partner_url: https://www.smsmasivo.com.co/
+- partner_name: Google Play Developer (Google Play SDK Index)
+  partner: google-play
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: Google Play SDK Index
+  evidence: https://play.google.com/sdks/details/com-clevertap-android-clevertap-android-sdk
+  mirror_of: google-play/integrations/google-play-integration-edges.yml
+  apps:
+  - CleverTap Android SDK
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: mobile SDK (analytics, marketing-and-engagement)
+  publisher_verified:
+  - Registered in Google Play SDK Console
 templates:
 - title: Create or update CleverTap user profiles from new Google Sheets rows
   url: https://zapier.com/apps/clevertap/integrations/google-sheets/1221360/create-or-update-clevertap-user-profiles-from-new-google-sheets-rows
