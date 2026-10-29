@@ -1,4 +1,4 @@
-# CleverTap (clevertap)
+# CleverTap
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,184 +66,182 @@
 
 CleverTap is a customer engagement and retention platform that helps businesses understand user behavior, segment audiences, and deliver personalized experiences across mobile push, email, SMS, in-app, web push, and WhatsApp channels. CleverTap exposes a comprehensive REST API surface covering profiles, events, campaigns, real-time analytics, catalogs, feature flags, and more, authenticated via account ID and passcode headers.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/clevertap/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/clevertap/refs/heads/main/apis.yml)
+**Areas:** Audiences · Customer Engagement · Customer Retention · Marketing Automation · Mobile Engagement · Push Notifications · User Behavior
 
-## Scope
+## CleverTap on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for CleverTap is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/clevertap/](https://apis.io/providers/clevertap/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (12)
 
-- Audiences
-- Customer Engagement
-- Customer Retention
-- Marketing Automation
-- Mobile Engagement
-- Push Notifications
-- User Behavior
+- [CleverTap Profile API](https://apis.io/apis/clevertap/profile-api/) — Upload, retrieve, update, and delete user profiles in CleverTap with identity, demographic, and custom property data.
+- [CleverTap Event API](https://apis.io/apis/clevertap/event-api/) — Record user events with arbitrary properties for behavioral segmentation, funnels, and triggered messaging.
+- [CleverTap Campaign API](https://apis.io/apis/clevertap/campaign-api/) — Programmatically create and manage push, email, SMS, web, and in-app campaigns and retrieve message status reports.
+- [CleverTap Bulletins API](https://apis.io/apis/clevertap/bulletins-api/) — Raise a Bulletin in CleverTap when a business event is triggered, used to drive real-time campaign delivery from external systems.
+- [CleverTap Catalog API](https://apis.io/apis/clevertap/catalog-api/) — Manage product catalog data feeding personalization, recommendations, and product-aware messaging.
+- [CleverTap Custom List API](https://apis.io/apis/clevertap/custom-list-api/) — Create and update custom lists used as audience segments in campaigns and journeys.
+- [CleverTap Remote Config API](https://apis.io/apis/clevertap/remote-config-api/) — Manage feature flags and remote configuration variables delivered to mobile apps and websites.
+- [CleverTap Real-Time Counts API](https://apis.io/apis/clevertap/counts-api/) — Query real-time counts and trends of events, profiles, and segments.
+- [CleverTap Campaigns API](https://apis.io/apis/clevertap/clevertap-campaigns-api/) — The Campaigns API from CleverTap — 3 operation(s) for campaigns.
+- [CleverTap Events API](https://apis.io/apis/clevertap/clevertap-events-api/) — The Events API from CleverTap — 2 operation(s) for events.
+- [CleverTap Profiles API](https://apis.io/apis/clevertap/clevertap-profiles-api/) — The Profiles API from CleverTap — 4 operation(s) for profiles.
+- [CleverTap Reports API](https://apis.io/apis/clevertap/clevertap-reports-api/) — The Reports API from CleverTap — 2 operation(s) for reports.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-11-14
-- **Modified:** 2026-04-26
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### AsyncAPI (1)
 
-### CleverTap Profile API
+Event-driven and webhook contracts.
 
-Upload, retrieve, update, and delete user profiles in CleverTap with identity, demographic, and custom property data.
+- [Clevertap Webhooks](https://apis.io/asyncapis/clevertap/clevertap-webhooks/)
 
-- **Human URL:** [https://developer.clevertap.com/docs/profile-api](https://developer.clevertap.com/docs/profile-api)
+#### MCP servers (1)
 
-#### Tags
+Model Context Protocol servers that expose the API to agents.
 
-- Profiles
-- User Data
+- [clevertap](https://apis.io/servers/clevertap/clevertap/)
 
-#### Properties
+#### Agentic access (1)
 
-- [Documentation](https://developer.clevertap.com/docs/profile-api)
-- [Postman Collection](collections/clevertap.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/clevertap.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-### CleverTap Event API
+- [Clevertap Agentic Access](https://apis.io/agentic-access/clevertap/clevertap-agentic-access/)
 
-Record user events with arbitrary properties for behavioral segmentation, funnels, and triggered messaging.
+#### JSON-LD (1)
 
-- **Human URL:** [https://developer.clevertap.com/docs/event-api](https://developer.clevertap.com/docs/event-api)
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Clevertap Context](https://apis.io/jsonld/clevertap/clevertap-context/)
 
-- Events
-- Tracking
+#### Collections (5)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://developer.clevertap.com/docs/event-api)
-- [Postman Collection](collections/clevertap.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/clevertap.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [CleverTap REST API](https://apis.io/collections/clevertap/open-clevertap/)
+- [CleverTap REST Campaigns API](https://apis.io/collections/clevertap/open-clevertap-campaigns-api/)
+- [CleverTap REST Campaigns Events API](https://apis.io/collections/clevertap/open-clevertap-events-api/)
+- [CleverTap REST Campaigns Profiles API](https://apis.io/collections/clevertap/open-clevertap-profiles-api/)
+- [CleverTap REST Campaigns Reports API](https://apis.io/collections/clevertap/open-clevertap-reports-api/)
 
-### CleverTap Campaign API
+#### Overlays (4)
 
-Programmatically create and manage push, email, SMS, web, and in-app campaigns and retrieve message status reports.
+OpenAPI overlays, including conversational phrasing for each operation.
 
-- **Human URL:** [https://developer.clevertap.com/docs/create-a-campaign-api](https://developer.clevertap.com/docs/create-a-campaign-api)
+- [Clevertap Campaigns Overlay](https://apis.io/overlays/clevertap/clevertap-campaigns-overlay/)
+- [Clevertap Events Overlay](https://apis.io/overlays/clevertap/clevertap-events-overlay/)
+- [Clevertap Profiles Overlay](https://apis.io/overlays/clevertap/clevertap-profiles-overlay/)
+- [Clevertap Reports Overlay](https://apis.io/overlays/clevertap/clevertap-reports-overlay/)
 
-#### Tags
+#### Governance rules (1)
 
-- Campaigns
-- Messaging
+Spectral rulesets for the provider's contracts.
 
-#### Properties
+- [CleverTap API Rules](https://apis.io/rules/clevertap/clevertap-rules/)
 
-- [Documentation](https://developer.clevertap.com/docs/create-a-campaign-api)
-- [Postman Collection](collections/clevertap.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/clevertap.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Security (3)
 
-### CleverTap Bulletins API
+Authentication, trust centre, and vulnerability disclosure.
 
-Raise a Bulletin in CleverTap when a business event is triggered, used to drive real-time campaign delivery from external systems.
+- [Clevertap Authentication](https://apis.io/security/clevertap/clevertap-authentication/)
+- [Clevertap Domain Security](https://apis.io/security/clevertap/clevertap-domain-security/)
+- [Clevertap Trust Center](https://apis.io/security/clevertap/clevertap-trust-center/)
 
-- **Human URL:** [https://developer.clevertap.com/docs/bulletins-api](https://developer.clevertap.com/docs/bulletins-api)
+#### OAuth scopes (1)
 
-#### Tags
+The permissions the API asks for.
 
-- Bulletins
-- Triggers
+- [Clevertap Scopes](https://apis.io/scopes/clevertap/clevertap-scopes/)
 
-#### Properties
+#### Plans and pricing (1)
 
-- [Documentation](https://developer.clevertap.com/docs/bulletins-api)
-- [Postman Collection](collections/clevertap.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/clevertap.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published plans, tiers and prices.
 
-### CleverTap Catalog API
+- [Clevertap Plans Pricing](https://apis.io/plans/clevertap/clevertap-plans-pricing/)
 
-Manage product catalog data feeding personalization, recommendations, and product-aware messaging.
+#### Rate limits (1)
 
-- **Human URL:** [https://developer.clevertap.com/docs/catalog-api](https://developer.clevertap.com/docs/catalog-api)
+Published request limits.
 
-#### Tags
+- [Clevertap Rate Limits](https://apis.io/rate-limits/clevertap/clevertap-rate-limits/)
 
-- Catalog
-- Product Data
+#### FinOps (1)
 
-#### Properties
+What the API costs to run, by operation.
 
-- [Documentation](https://developer.clevertap.com/docs/catalog-api)
-- [Postman Collection](collections/clevertap.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/clevertap.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Clevertap Finops](https://apis.io/finops/clevertap/clevertap-finops/)
 
-### CleverTap Custom List API
+## Where to find this API
 
-Create and update custom lists used as audience segments in campaigns and journeys.
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- **Human URL:** [https://developer.clevertap.com/docs/custom-list-api](https://developer.clevertap.com/docs/custom-list-api)
-
-#### Tags
-
-- Audiences
-- Lists
-
-#### Properties
-
-- [Documentation](https://developer.clevertap.com/docs/custom-list-api)
-- [Postman Collection](collections/clevertap.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/clevertap.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### CleverTap Remote Config API
-
-Manage feature flags and remote configuration variables delivered to mobile apps and websites.
-
-- **Human URL:** [https://developer.clevertap.com/docs/remote-config-api](https://developer.clevertap.com/docs/remote-config-api)
-
-#### Tags
-
-- Feature Flags
-- Remote Config
-
-#### Properties
-
-- [Documentation](https://developer.clevertap.com/docs/remote-config-api)
-- [Postman Collection](collections/clevertap.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/clevertap.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### CleverTap Real-Time Counts API
-
-Query real-time counts and trends of events, profiles, and segments.
-
-- **Human URL:** [https://developer.clevertap.com/docs/real-time-counts-api](https://developer.clevertap.com/docs/real-time-counts-api)
-
-#### Tags
-
-- Analytics
-- Counts
-
-#### Properties
-
-- [Documentation](https://developer.clevertap.com/docs/real-time-counts-api)
-- [Postman Collection](collections/clevertap.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/clevertap.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/CleverTap)
-- [LinkedIn](https://www.linkedin.com/company/clevertap)
 - [Website](https://clevertap.com/)
-- [Developer  Portal](https://developer.clevertap.com/)
 - [Documentation](https://developer.clevertap.com/docs)
-- [Authentication](https://developer.clevertap.com/docs/api-authentication)
-- [Status Page](https://status.clevertap.com/)
+- [Getting started](https://developer.clevertap.com/docs/getting-started)
+- [API reference](https://developer.clevertap.com/docs/api-reference)
 - [Pricing](https://clevertap.com/pricing/)
-- [Privacy Policy](https://clevertap.com/privacy-policy/)
-- [Terms of Service](https://clevertap.com/terms-of-service/)
-- [JSON-LD](json-ld/clevertap-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Spectral Rules](rules/clevertap-rules.yml) — [Spectral](https://docs.stoplight.io/docs/spectral)
-- [L L Ms Txt](https://developer.clevertap.com/llms.txt)
+- [Sign up](https://eu1.dashboard.clevertap.com/self-serve.html)
+- [Support](https://help.clevertap.com/)
+- [Changelog](https://developer.clevertap.com/docs/changelog)
+- [Blog](https://clevertap.com/blog)
+- [Compliance](https://clevertap.com/security/)
+- [Terms of service](https://clevertap.com/terms-of-service/)
+- [Privacy policy](https://clevertap.com/privacy-policy/)
+- [GitHub](https://github.com/CleverTap)
+- [Status](https://status.clevertap.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kinlane@gmail.com
+**Kin Score 60.2** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 56.7 |
+| Contract governance | 29.5 |
+| Operational transparency | 65.8 |
+| Developer ergonomics | 38.7 |
+| Access clarity | 81.6 |
+
+**Agent readiness 48.6** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/clevertap/](https://apis.io/providers/clevertap/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for CleverTap: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/clevertap/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
