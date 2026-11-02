@@ -1,0 +1,71 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://clevertap.com/pricing/
+sources:
+- https://clevertap.com/pricing/
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T141238
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: tiered-subscription
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-28'
+  managed_tier: Core
+published: true
+note: Only Core shows a numeric price ($85 /month*, taxes apply, excludes add-ons, billing starts post
+  30-day trial). Pro and Ultimate are demo-only. Pricing stated to be based on Monthly Active Users (MAU)
+  or Data Points; many features listed as Add-on.
+plan_count: 3
+currency: USD
+plans:
+- name: Core
+  price_text: $85 /month*
+  price: 85
+  currency: USD
+  period: month
+  unit: up to 5,000 MAU (selectable MAU tiers)
+  included_quota: 600+ Promotional CleverAI™ Tokens included; CleverAI™ for Assisted Orchestration; omnichannel
+    engagement; 3 years data retention
+- name: Pro
+  price_text: Get a demo
+  period: none
+  included_quota: 3000+ Promotional CleverAI™ Tokens included; everything in Core plus optimized orchestration;
+    3 years data retention
+- name: Ultimate
+  price_text: Get a demo
+  period: none
+  included_quota: 6000+ Promotional CleverAI™ Tokens + Priority allocation; agentic orchestration; up
+    to 10 years data retention
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - subscription
+  units: []
+  plans:
+  - name: Core
+    access: other
+    model: subscription
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Pro
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
+  - name: Ultimate
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
