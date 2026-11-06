@@ -41,7 +41,7 @@ plans:
   included_quota: 6000+ Promotional CleverAI™ Tokens + Priority allocation; agentic orchestration; up
     to 10 years data retention
 x-canonical:
-  generated: '2026-11-02'
+  generated: '2026-11-06'
   vocabulary: engine/economics/plans-canonical.yml
   models:
   - subscription
